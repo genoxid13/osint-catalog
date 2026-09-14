@@ -7,76 +7,50 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
   * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-
   :root {
-    --bg: #0a0a0a;
-    --bg-2: #121212;
-    --card: #141414;
-    --card-2: #1a1a1a;
-    --border: #232323;
-    --border-2: #2a2a2a;
-    --text: #f5f5f5;
-    --text-2: #a0a0a0;
-    --text-3: #6b6b6b;
-    --blue: #4a9eff;
-    --gold: #fbbf24;
-    --tg: #2AABEE;
+    --bg: #0a0a0a; --bg-2: #121212; --card: #141414; --card-2: #1a1a1a;
+    --border: #232323; --border-2: #2a2a2a;
+    --text: #f5f5f5; --text-2: #a0a0a0; --text-3: #6b6b6b;
+    --blue: #4a9eff; --gold: #fbbf24; --tg: #2AABEE;
   }
-
   html, body {
-    background: var(--bg);
-    color: var(--text);
+    background: var(--bg); color: var(--text);
     font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
-    font-size: 15px;
-    line-height: 1.5;
-    min-height: 100vh;
-    overflow-x: hidden;
+    font-size: 15px; line-height: 1.5; min-height: 100vh; overflow-x: hidden;
   }
-
   .topbar {
     position: sticky; top: 0; z-index: 100;
-    background: rgba(10, 10, 10, 0.9);
-    backdrop-filter: blur(20px);
+    background: rgba(10,10,10,0.9); backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
-    padding: 12px 16px;
-    display: flex; justify-content: flex-end; align-items: center; gap: 8px;
-    border-bottom: 1px solid var(--border);
+    padding: 12px 16px; display: flex; justify-content: flex-end;
+    align-items: center; gap: 8px; border-bottom: 1px solid var(--border);
   }
-
   .lang-switch {
-    display: flex; gap: 2px;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 8px; padding: 3px;
+    display: flex; gap: 2px; background: var(--card);
+    border: 1px solid var(--border); border-radius: 8px; padding: 3px;
   }
   .lang-switch button {
-    background: transparent; border: none;
-    color: var(--text-2); font-size: 12px; font-weight: 600;
-    padding: 6px 12px; border-radius: 6px;
-    cursor: pointer; font-family: inherit; transition: 0.2s;
+    background: transparent; border: none; color: var(--text-2);
+    font-size: 12px; font-weight: 600; padding: 6px 12px;
+    border-radius: 6px; cursor: pointer; font-family: inherit; transition: 0.2s;
   }
   .lang-switch button.active { background: var(--card-2); color: var(--text); }
-
   .globe {
-    width: 36px; height: 36px;
-    display: flex; align-items: center; justify-content: center;
-    background: var(--card); border: 1px solid var(--border);
-    border-radius: 8px; cursor: pointer; color: var(--text-2);
+    width: 36px; height: 36px; display: flex; align-items: center;
+    justify-content: center; background: var(--card);
+    border: 1px solid var(--border); border-radius: 8px;
+    cursor: pointer; color: var(--text-2);
   }
-
   header { text-align: center; padding: 40px 20px 30px; }
-
   .logo {
     width: 90px; height: 90px; margin: 0 auto 24px;
     display: flex; align-items: center; justify-content: center;
   }
   .logo svg { width: 100%; height: 100%; filter: drop-shadow(0 0 20px rgba(255,255,255,0.08)); }
-
   h1.title {
     font-size: 32px; font-weight: 600;
     letter-spacing: -0.5px; margin-bottom: 16px;
   }
-
   .founder {
     font-size: 15px; color: var(--text-2);
     display: flex; align-items: center; justify-content: center;
@@ -85,47 +59,33 @@
   .founder a {
     color: var(--text); text-decoration: none;
     display: inline-flex; align-items: center; gap: 6px;
-    padding-bottom: 2px; border-bottom: 1px solid var(--text-3);
-    transition: 0.2s;
+    padding-bottom: 2px; border-bottom: 1px solid var(--text-3); transition: 0.2s;
   }
   .founder a:hover { color: var(--tg); border-color: var(--tg); }
   .founder svg { width: 16px; height: 16px; }
-
-  .search-wrap {
-    max-width: 720px; margin: 0 auto;
-    padding: 0 20px; position: relative;
-  }
+  .search-wrap { max-width: 720px; margin: 0 auto; padding: 0 20px; position: relative; }
   .search-wrap::before {
-    content: ''; position: absolute;
-    left: 34px; top: 50%; transform: translateY(-50%);
-    width: 18px; height: 18px;
+    content: ''; position: absolute; left: 34px; top: 50%;
+    transform: translateY(-50%); width: 18px; height: 18px;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='18' height='18' viewBox='0 0 24 24' fill='none' stroke='%236b6b6b' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Ccircle cx='11' cy='11' r='8'/%3E%3Cpath d='m21 21-4.35-4.35'/%3E%3C/svg%3E");
     pointer-events: none;
   }
   .search-wrap input {
-    width: 100%;
-    background: var(--bg-2);
-    border: 1px solid var(--border);
-    color: var(--text); font-family: inherit;
-    font-size: 15px; padding: 16px 20px 16px 52px;
+    width: 100%; background: var(--bg-2);
+    border: 1px solid var(--border); color: var(--text);
+    font-family: inherit; font-size: 15px; padding: 16px 20px 16px 52px;
     border-radius: 12px; outline: none; transition: 0.2s;
   }
   .search-wrap input::placeholder { color: var(--text-3); }
   .search-wrap input:focus { border-color: var(--border-2); background: var(--card); }
-
   .filters {
-    max-width: 720px; margin: 24px auto 0;
-    padding: 0 20px;
+    max-width: 720px; margin: 24px auto 0; padding: 0 20px;
     display: grid; grid-template-columns: 1fr 1fr; gap: 10px;
   }
-
   .select {
-    position: relative;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 12px 36px 12px 14px;
-    cursor: pointer; user-select: none;
+    position: relative; background: var(--card);
+    border: 1px solid var(--border); border-radius: 10px;
+    padding: 12px 36px 12px 14px; cursor: pointer; user-select: none;
     transition: 0.15s; font-size: 14px;
   }
   .select:hover { border-color: var(--border-2); }
@@ -133,90 +93,64 @@
   .select .label { color: var(--text-3); margin-right: 6px; }
   .select .value { color: var(--text); font-weight: 500; }
   .select::after {
-    content: ''; position: absolute;
-    right: 14px; top: 50%; transform: translateY(-50%);
-    width: 12px; height: 12px;
+    content: ''; position: absolute; right: 14px; top: 50%;
+    transform: translateY(-50%); width: 12px; height: 12px;
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24' fill='none' stroke='%23a0a0a0' stroke-width='2.5' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='m6 9 6 6 6-6'/%3E%3C/svg%3E");
     transition: 0.2s;
   }
   .select.open::after { transform: translateY(-50%) rotate(180deg); }
-
   .dropdown-menu {
-    position: absolute;
-    top: calc(100% + 6px); left: 0; right: 0;
-    background: #1a1a1a;
-    border: 1px solid #2a2a2a;
-    border-radius: 10px;
-    padding: 6px; z-index: 500;
-    max-height: 280px; overflow-y: auto;
-    box-shadow: 0 12px 30px rgba(0,0,0,0.6);
-    display: none;
+    position: absolute; top: calc(100% + 6px); left: 0; right: 0;
+    background: #1a1a1a; border: 1px solid #2a2a2a; border-radius: 10px;
+    padding: 6px; z-index: 500; max-height: 280px; overflow-y: auto;
+    box-shadow: 0 12px 30px rgba(0,0,0,0.6); display: none;
   }
   .dropdown-menu.show { display: block; }
   .dropdown-menu .opt {
-    padding: 9px 12px; border-radius: 7px;
-    font-size: 14px; cursor: pointer;
-    color: var(--text-2); transition: 0.12s;
+    padding: 9px 12px; border-radius: 7px; font-size: 14px;
+    cursor: pointer; color: var(--text-2); transition: 0.12s;
   }
   .dropdown-menu .opt:hover { background: #232323; color: var(--text); }
   .dropdown-menu .opt.selected { color: var(--text); font-weight: 600; background: #1f1f1f; }
-
   .actions-row {
-    max-width: 720px; margin: 16px auto 0;
-    padding: 0 20px;
+    max-width: 720px; margin: 16px auto 0; padding: 0 20px;
     display: grid; grid-template-columns: 1fr auto; gap: 10px;
   }
   .fav-btn {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 10px;
-    padding: 12px 16px;
-    color: var(--text-2);
-    font-family: inherit; font-size: 14px;
-    cursor: pointer;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 10px; padding: 12px 16px; color: var(--text-2);
+    font-family: inherit; font-size: 14px; cursor: pointer;
     display: flex; align-items: center; gap: 10px;
     transition: 0.15s; text-align: left;
   }
   .fav-btn:hover { border-color: var(--border-2); color: var(--text); }
   .fav-btn.active { color: var(--gold); border-color: rgba(251,191,36,0.4); }
   .fav-btn svg { width: 16px; height: 16px; flex-shrink: 0; }
-
   .view-switch {
-    display: flex;
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 10px; padding: 3px;
-    position: relative;
+    display: flex; background: var(--card);
+    border: 1px solid var(--border); border-radius: 10px;
+    padding: 3px; position: relative;
   }
   .view-switch button {
-    background: transparent; border: none;
-    width: 40px; height: 36px;
+    background: transparent; border: none; width: 40px; height: 36px;
     display: flex; align-items: center; justify-content: center;
-    color: var(--text-3); cursor: pointer;
-    border-radius: 7px; transition: 0.15s;
+    color: var(--text-3); cursor: pointer; border-radius: 7px; transition: 0.15s;
   }
   .view-switch button.active { background: var(--card-2); color: var(--text); }
   .view-switch button svg { width: 16px; height: 16px; }
-
   .new-badge {
     position: absolute; top: -8px; right: -4px;
-    background: var(--blue); color: white;
-    font-size: 9px; font-weight: 700;
-    padding: 3px 6px; border-radius: 4px;
+    background: var(--blue); color: white; font-size: 9px;
+    font-weight: 700; padding: 3px 6px; border-radius: 4px;
     letter-spacing: 0.3px;
   }
-
   .stats {
-    max-width: 720px; margin: 32px auto 0;
-    padding: 0 20px;
-    display: flex; align-items: center; gap: 10px;
-    font-size: 15px;
+    max-width: 720px; margin: 32px auto 0; padding: 0 20px;
+    display: flex; align-items: center; gap: 10px; font-size: 15px;
   }
   .stats .total { color: var(--text-2); }
   .stats .shown { color: var(--text); font-weight: 600; }
-
   .category { max-width: 720px; margin: 0 auto; padding: 0 20px; }
-
   .cat-header {
     display: flex; justify-content: space-between; align-items: center;
     padding: 22px 0 14px; cursor: pointer; user-select: none;
@@ -233,16 +167,12 @@
   .cat-toggle svg { width: 14px; height: 14px; transition: 0.2s; }
   .category.collapsed .cat-toggle svg { transform: rotate(-90deg); }
   .category.collapsed .cat-body { display: none !important; }
-
   .card {
-    background: var(--card);
-    border: 1px solid var(--border);
-    border-radius: 14px;
-    padding: 18px; margin-bottom: 12px;
+    background: var(--card); border: 1px solid var(--border);
+    border-radius: 14px; padding: 18px; margin-bottom: 12px;
     transition: 0.2s; cursor: pointer;
   }
   .card:hover { border-color: var(--border-2); background: var(--card-2); }
-
   .card-head {
     display: flex; justify-content: space-between; align-items: flex-start;
     gap: 12px; margin-bottom: 12px;
@@ -254,40 +184,32 @@
   .card-icon {
     width: 28px; height: 28px; flex-shrink: 0;
     display: flex; align-items: center; justify-content: center;
-    border-radius: 7px; overflow: hidden;
-    font-size: 16px; background: #1a1a1a;
+    border-radius: 7px; overflow: hidden; font-size: 16px; background: #1a1a1a;
   }
   .card-icon img, .card-icon svg { width: 100%; height: 100%; object-fit: cover; }
   .card-name {
     font-size: 17px; font-weight: 600; color: var(--text);
     white-space: nowrap; overflow: hidden; text-overflow: ellipsis;
   }
-
   .card-fav {
-    background: transparent;
-    border: 1px solid var(--border);
-    border-radius: 8px;
-    width: 32px; height: 32px;
+    background: transparent; border: 1px solid var(--border);
+    border-radius: 8px; width: 32px; height: 32px;
     display: flex; align-items: center; justify-content: center;
-    color: var(--text-3); cursor: pointer;
-    flex-shrink: 0; transition: 0.15s;
+    color: var(--text-3); cursor: pointer; flex-shrink: 0; transition: 0.15s;
   }
   .card-fav:hover { border-color: var(--border-2); color: var(--text-2); }
   .card-fav.active { color: var(--gold); border-color: rgba(251,191,36,0.3); }
   .card-fav svg { width: 15px; height: 15px; }
-
   .card-desc {
     color: var(--text-2); font-size: 14px;
     line-height: 1.55; margin-bottom: 16px;
   }
-
   .card-footer {
     display: flex; justify-content: space-between; align-items: flex-end; gap: 12px;
   }
   .card-path {
     color: var(--text-3); font-size: 12.5px;
-    font-style: italic; line-height: 1.5;
-    flex: 1; min-width: 0;
+    font-style: italic; line-height: 1.5; flex: 1; min-width: 0;
   }
   .card-path span { color: var(--text-2); }
   .card-link {
@@ -296,37 +218,25 @@
   }
   .card-link:hover { color: var(--text); }
   .card-link svg { width: 16px; height: 16px; }
-
   .cat-body.view-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
     gap: 12px;
   }
   .cat-body.view-grid .card { margin-bottom: 0; }
-
   .cat-body.view-compact {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
     gap: 8px;
   }
   .cat-body.view-compact .card { margin-bottom: 0; padding: 12px; }
   .cat-body.view-compact .card-desc,
   .cat-body.view-compact .card-path { display: none; }
   .cat-body.view-compact .card-head { margin-bottom: 0; }
-
-  .cat-body.view-tree {
-    padding-left: 16px;
-    border-left: 1px dashed #2a2a2a;
-  }
-
+  .cat-body.view-tree { padding-left: 16px; border-left: 1px dashed #2a2a2a; }
   .empty {
-    max-width: 720px; margin: 40px auto;
-    padding: 40px 20px; text-align: center;
-    color: var(--text-3); font-size: 14px;
-    display: none;
+    max-width: 720px; margin: 40px auto; padding: 40px 20px;
+    text-align: center; color: var(--text-3); font-size: 14px; display: none;
   }
   .empty.show { display: block; }
-
   footer {
     text-align: center; padding: 40px 20px 60px;
     color: var(--text-3); font-size: 12.5px;
@@ -342,16 +252,13 @@
     margin-top: 16px; padding: 10px 18px;
     background: rgba(42,171,238,0.08);
     border: 1px solid rgba(42,171,238,0.25);
-    border-radius: 10px; font-size: 14px; font-weight: 500;
-    transition: 0.2s;
+    border-radius: 10px; font-size: 14px; font-weight: 500; transition: 0.2s;
   }
   footer a.tg-link:hover {
     background: rgba(42,171,238,0.15);
-    border-color: rgba(42,171,238,0.5);
-    transform: translateY(-1px);
+    border-color: rgba(42,171,238,0.5); transform: translateY(-1px);
   }
   footer a.tg-link svg { width: 18px; height: 18px; fill: var(--tg); }
-
   @media (max-width: 520px) {
     h1.title { font-size: 26px; }
     .logo { width: 70px; height: 70px; }
@@ -503,17 +410,6 @@
         </div>
       </div>
 
-      <div class="card" data-type="web" data-access="paid">
-        <div class="card-head">
-          <div class="card-title"><div class="card-icon">👁️</div><div class="card-name">Eye of God (Зеркала)</div></div>
-        </div>
-        <div class="card-desc">Каталог актуальных зеркал сервиса пробива. Ведёт на навигатор, где собраны рабочие боты.</div>
-        <div class="card-footer">
-          <div class="card-path">Деанон / <span>Навигатор зеркал</span></div>
-          <a class="card-link" href="https://t.me/glaz_boga_official_bot" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-        </div>
-      </div>
-
       <div class="card" data-type="web" data-access="freemium">
         <div class="card-head">
           <div class="card-title"><div class="card-icon">📱</div><div class="card-name">GetContact</div></div>
@@ -533,50 +429,6 @@
         <div class="card-footer">
           <div class="card-path">Деанон / <span>Телефон</span></div>
           <a class="card-link" href="https://numbuster.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-        </div>
-      </div>
-
-      <div class="card" data-type="web" data-access="paid">
-        <div class="card-head">
-          <div class="card-title"><div class="card-icon">🧠</div><div class="card-name">Sherlock Bot (Зеркала)</div></div>
-        </div>
-        <div class="card-desc">Каталог зеркал Telegram-бота поиска по нику, ФИО, телефону.</div>
-        <div class="card-footer">
-          <div class="card-path">Деанон / <span>Навигатор зеркал</span></div>
-          <a class="card-link" href="https://t.me/sherlock_osint_bot" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-        </div>
-      </div>
-
-      <div class="card" data-type="web" data-access="paid">
-        <div class="card-head">
-          <div class="card-title"><div class="card-icon">🎯</div><div class="card-name">Usersbox (Зеркала)</div></div>
-        </div>
-        <div class="card-desc">Каталог зеркал Telegram-бота поиска по базам утечек.</div>
-        <div class="card-footer">
-          <div class="card-path">Деанон / <span>Навигатор зеркал</span></div>
-          <a class="card-link" href="https://t.me/usersbox_official_bot" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-        </div>
-      </div>
-
-      <div class="card" data-type="web" data-access="paid">
-        <div class="card-head">
-          <div class="card-title"><div class="card-icon">🕵️</div><div class="card-name">Himera Search (Зеркала)</div></div>
-        </div>
-        <div class="card-desc">Каталог зеркал бота поиска по номеру, ФИО, email, VK, авто.</div>
-        <div class="card-footer">
-          <div class="card-path">Деанон / <span>Навигатор зеркал</span></div>
-          <a class="card-link" href="https://t.me/himera_search_bot" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
-        </div>
-      </div>
-
-      <div class="card" data-type="web" data-access="paid">
-        <div class="card-head">
-          <div class="card-title"><div class="card-icon">💠</div><div class="card-name">VBazah (Зеркала)</div></div>
-        </div>
-        <div class="card-desc">Каталог зеркал бота поиска по базам: ФИО, телефон, авто, email, VK.</div>
-        <div class="card-footer">
-          <div class="card-path">Деанон / <span>Навигатор зеркал</span></div>
-          <a class="card-link" href="https://vbazah.bot" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
         </div>
       </div>
 
