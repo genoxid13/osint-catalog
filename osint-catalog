@@ -1,4 +1,4 @@
-< ! DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ru">
 <head>
 <meta charset="UTF-8">
@@ -21,7 +21,6 @@
     --blue: #4a9eff;
     --gold: #fbbf24;
     --tg: #2AABEE;
-    --red: #ef4444;
   }
 
   html, body {
@@ -234,10 +233,6 @@
   .cat-toggle svg { width: 14px; height: 14px; transition: 0.2s; }
   .category.collapsed .cat-toggle svg { transform: rotate(-90deg); }
   .category.collapsed .cat-body { display: none !important; }
-
-  /* Стиль для категории "Деанон" */
-  .category[data-category="deanon"] .cat-header h2 { color: var(--red); }
-  .category[data-category="deanon"] .cat-header h2 .count { color: var(--text-3); }
 
   .card {
     background: var(--card);
@@ -470,10 +465,10 @@
 
 <main id="content">
 
-  <!-- ДЕАНОН -->
+  <!-- ===================== ДЕАНОН ===================== -->
   <section class="category" data-category="deanon">
     <div class="cat-header">
-      <h2>💀 Деанон <span class="count">0</span></h2>
+      <h2>Деанон <span class="count">0</span></h2>
       <div class="cat-toggle">свернуть
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="m6 9 6 6 6-6"/></svg>
       </div>
@@ -483,11 +478,11 @@
       <div class="card" data-type="web" data-access="freemium">
         <div class="card-head">
           <div class="card-title">
-            <div class="card-icon">💀</div>
+            <div class="card-icon">🔎</div>
             <div class="card-name">Sosok Monster</div>
           </div>
         </div>
-        <div class="card-desc">Поиск информации о людях: ФИО, телефон, email, соцсети, автобазы и другие открытые базы данных</div>
+        <div class="card-desc">Поиск информации о людях: ФИО, телефон, email, соцсети, автобазы и другие открытые базы</div>
         <div class="card-footer">
           <div class="card-path">Деанон / <span>Поиск по базам</span></div>
           <a class="card-link" href="https://sosok.monster" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
@@ -501,17 +496,105 @@
             <div class="card-name">Infinity Search</div>
           </div>
         </div>
-        <div class="card-desc">Поиск информации по номеру, ФИО, email, IP и другим данным. Есть Telegram-бот</div>
+        <div class="card-desc">Поиск информации по номеру, ФИО, email, IP. Есть Telegram-бот</div>
         <div class="card-footer">
           <div class="card-path">Деанон / <span>Универсальный поиск</span></div>
           <a class="card-link" href="https://infinity-search.fun" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
         </div>
       </div>
 
+      <div class="card" data-type="web" data-access="paid">
+        <div class="card-head">
+          <div class="card-title"><div class="card-icon">👁️</div><div class="card-name">Глаз Бога</div></div>
+        </div>
+        <div class="card-desc">Telegram-бот для поиска по базам: телефон, ФИО, авто, соцсети</div>
+        <div class="card-footer">
+          <div class="card-path">Деанон / <span>Telegram Bot</span></div>
+          <a class="card-link" href="https://t.me/glaz_boga_official_bot" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+
+      <div class="card" data-type="web" data-access="freemium">
+        <div class="card-head">
+          <div class="card-title"><div class="card-icon">📱</div><div class="card-name">GetContact</div></div>
+        </div>
+        <div class="card-desc">Определение имени по номеру телефона (как тебя записали)</div>
+        <div class="card-footer">
+          <div class="card-path">Деанон / <span>Телефон</span></div>
+          <a class="card-link" href="https://www.getcontact.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+
+      <div class="card" data-type="web" data-access="freemium">
+        <div class="card-head">
+          <div class="card-title"><div class="card-icon">🔍</div><div class="card-name">NumBuster</div></div>
+        </div>
+        <div class="card-desc">Проверка номера телефона — имя, отзывы, спам</div>
+        <div class="card-footer">
+          <div class="card-path">Деанон / <span>Телефон</span></div>
+          <a class="card-link" href="https://numbuster.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+
+      <div class="card" data-type="web" data-access="paid">
+        <div class="card-head">
+          <div class="card-title"><div class="card-icon">🧠</div><div class="card-name">Sherlock Bot</div></div>
+        </div>
+        <div class="card-desc">Telegram-бот поиска по нику, ФИО, телефону</div>
+        <div class="card-footer">
+          <div class="card-path">Деанон / <span>Telegram Bot</span></div>
+          <a class="card-link" href="https://t.me/sherlock_osint_bot" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+
+      <div class="card" data-type="web" data-access="paid">
+        <div class="card-head">
+          <div class="card-title"><div class="card-icon">🎯</div><div class="card-name">Usersbox</div></div>
+        </div>
+        <div class="card-desc">Telegram-бот поиска по базам утечек</div>
+        <div class="card-footer">
+          <div class="card-path">Деанон / <span>Telegram Bot</span></div>
+          <a class="card-link" href="https://t.me/usersbox_official_bot" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+
+      <div class="card" data-type="web" data-access="paid">
+        <div class="card-head">
+          <div class="card-title"><div class="card-icon">🕵️</div><div class="card-name">Himera Search</div></div>
+        </div>
+        <div class="card-desc">Поиск по номеру, ФИО, email, VK, авто</div>
+        <div class="card-footer">
+          <div class="card-path">Деанон / <span>Поиск по базам</span></div>
+          <a class="card-link" href="https://t.me/himera_search_bot" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+
+      <div class="card" data-type="web" data-access="paid">
+        <div class="card-head">
+          <div class="card-title"><div class="card-icon">💠</div><div class="card-name">VBazah</div></div>
+        </div>
+        <div class="card-desc">Поиск по базам: ФИО, телефон, авто, email, VK</div>
+        <div class="card-footer">
+          <div class="card-path">Деанон / <span>Поиск по базам</span></div>
+          <a class="card-link" href="https://vbazah.bot" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+
+      <div class="card" data-type="web" data-access="paid">
+        <div class="card-head">
+          <div class="card-title"><div class="card-icon">🦅</div><div class="card-name">Kribrum</div></div>
+        </div>
+        <div class="card-desc">Мониторинг соцсетей и поиск упоминаний о человеке</div>
+        <div class="card-footer">
+          <div class="card-path">Деанон / <span>Мониторинг</span></div>
+          <a class="card-link" href="https://kribrum.io" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- ПОИСКОВЫЕ СИСТЕМЫ -->
+  <!-- ===================== ПОИСКОВЫЕ СИСТЕМЫ ===================== -->
   <section class="category" data-category="search">
     <div class="cat-header">
       <h2>Поисковые системы <span class="count">0</span></h2>
@@ -522,42 +605,34 @@
     <div class="cat-body">
 
       <div class="card" data-type="web" data-access="free">
-        <div class="card-head">
-          <div class="card-title"><div class="card-icon">🔎</div><div class="card-name">Google</div></div>
-        </div>
+        <div class="card-head"><div class="card-title"><div class="card-icon">🔎</div><div class="card-name">Google</div></div></div>
         <div class="card-desc">Базовая поисковая система — мощнее всего с дорками</div>
         <div class="card-footer">
-          <div class="card-path">Поиск и мониторинг / <span>Поисковые системы</span></div>
+          <div class="card-path">Поиск / <span>Поисковые системы</span></div>
           <a class="card-link" href="https://google.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
         </div>
       </div>
 
       <div class="card" data-type="web" data-access="free">
-        <div class="card-head">
-          <div class="card-title"><div class="card-icon">🔎</div><div class="card-name">Яндекс</div></div>
-        </div>
+        <div class="card-head"><div class="card-title"><div class="card-icon">🔎</div><div class="card-name">Яндекс</div></div></div>
         <div class="card-desc">Лучший поиск по русскоязычному сегменту</div>
         <div class="card-footer">
-          <div class="card-path">Поиск и мониторинг / <span>Поисковые системы</span></div>
+          <div class="card-path">Поиск / <span>Поисковые системы</span></div>
           <a class="card-link" href="https://yandex.ru" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
         </div>
       </div>
 
       <div class="card" data-type="web" data-access="free">
-        <div class="card-head">
-          <div class="card-title"><div class="card-icon">🦆</div><div class="card-name">DuckDuckGo</div></div>
-        </div>
+        <div class="card-head"><div class="card-title"><div class="card-icon">🦆</div><div class="card-name">DuckDuckGo</div></div></div>
         <div class="card-desc">Анонимный поиск без трекинга</div>
         <div class="card-footer">
-          <div class="card-path">Поиск и мониторинг / <span>Поисковые системы</span></div>
+          <div class="card-path">Поиск / <span>Поисковые системы</span></div>
           <a class="card-link" href="https://duckduckgo.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
         </div>
       </div>
 
       <div class="card" data-type="web" data-access="free">
-        <div class="card-head">
-          <div class="card-title"><div class="card-icon">📚</div><div class="card-name">Google Dorks Database</div></div>
-        </div>
+        <div class="card-head"><div class="card-title"><div class="card-icon">📚</div><div class="card-name">Google Dorks DB</div></div></div>
         <div class="card-desc">База Google Dorks в Exploit-DB</div>
         <div class="card-footer">
           <div class="card-path">Дорки / <span>Поисковые системы</span></div>
@@ -566,20 +641,63 @@
       </div>
 
       <div class="card" data-type="web" data-access="free">
-        <div class="card-head">
-          <div class="card-title"><div class="card-icon">🔍</div><div class="card-name">Startpage</div></div>
-        </div>
+        <div class="card-head"><div class="card-title"><div class="card-icon">🔍</div><div class="card-name">Startpage</div></div></div>
         <div class="card-desc">Приватный поиск на основе Google</div>
         <div class="card-footer">
-          <div class="card-path">Поиск и мониторинг / <span>Поисковые системы</span></div>
+          <div class="card-path">Поиск / <span>Поисковые системы</span></div>
           <a class="card-link" href="https://www.startpage.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+
+      <div class="card" data-type="web" data-access="free">
+        <div class="card-head"><div class="card-title"><div class="card-icon">🔎</div><div class="card-name">Bing</div></div></div>
+        <div class="card-desc">Поисковик Microsoft с хорошими операторами</div>
+        <div class="card-footer">
+          <div class="card-path">Поиск / <span>Поисковые системы</span></div>
+          <a class="card-link" href="https://bing.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+
+      <div class="card" data-type="web" data-access="free">
+        <div class="card-head"><div class="card-title"><div class="card-icon">🗂️</div><div class="card-name">Million Short</div></div></div>
+        <div class="card-desc">Поисковик, исключающий топовые сайты</div>
+        <div class="card-footer">
+          <div class="card-path">Поиск / <span>Поисковые системы</span></div>
+          <a class="card-link" href="https://millionshort.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+
+      <div class="card" data-type="web" data-access="free">
+        <div class="card-head"><div class="card-title"><div class="card-icon">🌍</div><div class="card-name">Search Engines of the World</div></div></div>
+        <div class="card-desc">Каталог поисковиков по странам и регионам</div>
+        <div class="card-footer">
+          <div class="card-path">Поиск / <span>Каталог</span></div>
+          <a class="card-link" href="https://www.searchenginecolossus.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+
+      <div class="card" data-type="web" data-access="free">
+        <div class="card-head"><div class="card-title"><div class="card-icon">🔐</div><div class="card-name">Searx</div></div></div>
+        <div class="card-desc">Метапоисковик с открытым кодом, без трекинга</div>
+        <div class="card-footer">
+          <div class="card-path">Поиск / <span>Метапоиск</span></div>
+          <a class="card-link" href="https://searx.be" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+
+      <div class="card" data-type="web" data-access="free">
+        <div class="card-head"><div class="card-title"><div class="card-icon">🕶️</div><div class="card-name">Ahmia</div></div></div>
+        <div class="card-desc">Поисковик по onion-сайтам в Tor</div>
+        <div class="card-footer">
+          <div class="card-path">Поиск / <span>Dark Web</span></div>
+          <a class="card-link" href="https://ahmia.fi" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
         </div>
       </div>
 
     </div>
   </section>
 
-  <!-- ПОИСК ЛЮДЕЙ -->
+  <!-- ===================== ПОИСК ЛЮДЕЙ ===================== -->
   <section class="category" data-category="people">
     <div class="cat-header">
       <h2>Поиск людей <span class="count">0</span></h2>
@@ -590,9 +708,7 @@
     <div class="cat-body">
 
       <div class="card" data-type="web" data-access="free">
-        <div class="card-head">
-          <div class="card-title"><div class="card-icon">🔓</div><div class="card-name">Have I Been Pwned</div></div>
-        </div>
+        <div class="card-head"><div class="card-title"><div class="card-icon">🔓</div><div class="card-name">Have I Been Pwned</div></div></div>
         <div class="card-desc">Проверка email и телефона на утечки данных</div>
         <div class="card-footer">
           <div class="card-path">Люди / <span>Проверка утечек</span></div>
@@ -601,9 +717,7 @@
       </div>
 
       <div class="card" data-type="web" data-access="free">
-        <div class="card-head">
-          <div class="card-title"><div class="card-icon">👤</div><div class="card-name">WebMii</div></div>
-        </div>
+        <div class="card-head"><div class="card-title"><div class="card-icon">👤</div><div class="card-name">WebMii</div></div></div>
         <div class="card-desc">Поиск людей и упоминаний в сети</div>
         <div class="card-footer">
           <div class="card-path">Люди / <span>Поиск по имени</span></div>
@@ -612,9 +726,7 @@
       </div>
 
       <div class="card" data-type="web" data-access="paid">
-        <div class="card-head">
-          <div class="card-title"><div class="card-icon">📊</div><div class="card-name">Pipl</div></div>
-        </div>
+        <div class="card-head"><div class="card-title"><div class="card-icon">📊</div><div class="card-name">Pipl</div></div></div>
         <div class="card-desc">Глубокий поиск информации о человеке</div>
         <div class="card-footer">
           <div class="card-path">Люди / <span>Профилирование</span></div>
@@ -623,9 +735,7 @@
       </div>
 
       <div class="card" data-type="cli" data-access="free">
-        <div class="card-head">
-          <div class="card-title"><div class="card-icon">🎯</div><div class="card-name">Sherlock</div></div>
-        </div>
+        <div class="card-head"><div class="card-title"><div class="card-icon">🎯</div><div class="card-name">Sherlock</div></div></div>
         <div class="card-desc">Поиск username по 400+ соцсетям (CLI)</div>
         <div class="card-footer">
           <div class="card-path">Люди / <span>Никнеймы</span></div>
@@ -634,9 +744,7 @@
       </div>
 
       <div class="card" data-type="web" data-access="free">
-        <div class="card-head">
-          <div class="card-title"><div class="card-icon">🔗</div><div class="card-name">WhatsMyName</div></div>
-        </div>
+        <div class="card-head"><div class="card-title"><div class="card-icon">🔗</div><div class="card-name">WhatsMyName</div></div></div>
         <div class="card-desc">Проверка username по сотням сайтов</div>
         <div class="card-footer">
           <div class="card-path">Люди / <span>Никнеймы</span></div>
@@ -645,9 +753,7 @@
       </div>
 
       <div class="card" data-type="web" data-access="freemium">
-        <div class="card-head">
-          <div class="card-title"><div class="card-icon">📇</div><div class="card-name">Hunter.io</div></div>
-        </div>
+        <div class="card-head"><div class="card-title"><div class="card-icon">📇</div><div class="card-name">Hunter.io</div></div></div>
         <div class="card-desc">Поиск корпоративных email по домену</div>
         <div class="card-footer">
           <div class="card-path">Люди / <span>Email OSINT</span></div>
@@ -655,10 +761,82 @@
         </div>
       </div>
 
+      <div class="card" data-type="web" data-access="free">
+        <div class="card-head"><div class="card-title"><div class="card-icon">🔎</div><div class="card-name">TruePeopleSearch</div></div></div>
+        <div class="card-desc">Поиск людей в США по имени, адресу, телефону</div>
+        <div class="card-footer">
+          <div class="card-path">Люди / <span>US-база</span></div>
+          <a class="card-link" href="https://www.truepeoplesearch.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+
+      <div class="card" data-type="web" data-access="free">
+        <div class="card-head"><div class="card-title"><div class="card-icon">🧑</div><div class="card-name">That'sThem</div></div></div>
+        <div class="card-desc">Поиск по имени, телефону, email и IP</div>
+        <div class="card-footer">
+          <div class="card-path">Люди / <span>Мультипоиск</span></div>
+          <a class="card-link" href="https://thatsthem.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+
+      <div class="card" data-type="web" data-access="free">
+        <div class="card-head"><div class="card-title"><div class="card-icon">👥</div><div class="card-name">PeekYou</div></div></div>
+        <div class="card-desc">Поиск людей по нику, имени и соцсетям</div>
+        <div class="card-footer">
+          <div class="card-path">Люди / <span>Никнеймы</span></div>
+          <a class="card-link" href="https://www.peekyou.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+
+      <div class="card" data-type="web" data-access="free">
+        <div class="card-head"><div class="card-title"><div class="card-icon">🔍</div><div class="card-name">FastPeopleSearch</div></div></div>
+        <div class="card-desc">Быстрый поиск людей, адресов и телефонов (US)</div>
+        <div class="card-footer">
+          <div class="card-path">Люди / <span>US-база</span></div>
+          <a class="card-link" href="https://www.fastpeoplesearch.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+
+      <div class="card" data-type="web" data-access="free">
+        <div class="card-head"><div class="card-title"><div class="card-icon">👤</div><div class="card-name">Spokeo</div></div></div>
+        <div class="card-desc">Поиск людей по email, телефону, имени (US)</div>
+        <div class="card-footer">
+          <div class="card-path">Люди / <span>US-база</span></div>
+          <a class="card-link" href="https://www.spokeo.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+
+      <div class="card" data-type="web" data-access="free">
+        <div class="card-head"><div class="card-title"><div class="card-icon">📧</div><div class="card-name">EmailRep</div></div></div>
+        <div class="card-desc">Репутация и данные об email-адресе</div>
+        <div class="card-footer">
+          <div class="card-path">Люди / <span>Email</span></div>
+          <a class="card-link" href="https://emailrep.io" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+
+      <div class="card" data-type="web" data-access="freemium">
+        <div class="card-head"><div class="card-title"><div class="card-icon">📩</div><div class="card-name">Epieos</div></div></div>
+        <div class="card-desc">Проверка email и поиск привязанных аккаунтов</div>
+        <div class="card-footer">
+          <div class="card-path">Люди / <span>Email</span></div>
+          <a class="card-link" href="https://epieos.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+
+      <div class="card" data-type="web" data-access="free">
+        <div class="card-head"><div class="card-title"><div class="card-icon">🌐</div><div class="card-name">Gravatar</div></div></div>
+        <div class="card-desc">Поиск профиля пользователя по email</div>
+        <div class="card-footer">
+          <div class="card-path">Люди / <span>Email</span></div>
+          <a class="card-link" href="https://gravatar.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- СОЦСЕТИ -->
+  <!-- ===================== СОЦСЕТИ ===================== -->
   <section class="category" data-category="social">
     <div class="cat-header">
       <h2>Социальные сети <span class="count">0</span></h2>
@@ -669,9 +847,7 @@
     <div class="cat-body">
 
       <div class="card" data-type="web" data-access="free">
-        <div class="card-head">
-          <div class="card-title"><div class="card-icon">🐦</div><div class="card-name">Twitter Advanced Search</div></div>
-        </div>
+        <div class="card-head"><div class="card-title"><div class="card-icon">🐦</div><div class="card-name">Twitter Advanced Search</div></div></div>
         <div class="card-desc">Продвинутый поиск по твитам</div>
         <div class="card-footer">
           <div class="card-path">Соцсети / <span>Twitter / X</span></div>
@@ -680,9 +856,7 @@
       </div>
 
       <div class="card" data-type="cli" data-access="free">
-        <div class="card-head">
-          <div class="card-title"><div class="card-icon">📸</div><div class="card-name">Instaloader</div></div>
-        </div>
+        <div class="card-head"><div class="card-title"><div class="card-icon">📸</div><div class="card-name">Instaloader</div></div></div>
         <div class="card-desc">Скачивание контента Instagram (CLI)</div>
         <div class="card-footer">
           <div class="card-path">Соцсети / <span>Instagram</span></div>
@@ -691,9 +865,7 @@
       </div>
 
       <div class="card" data-type="web" data-access="freemium">
-        <div class="card-head">
-          <div class="card-title"><div class="card-icon">🔎</div><div class="card-name">Social Searcher</div></div>
-        </div>
+        <div class="card-head"><div class="card-title"><div class="card-icon">🔎</div><div class="card-name">Social Searcher</div></div></div>
         <div class="card-desc">Поиск по всем соцсетям одновременно</div>
         <div class="card-footer">
           <div class="card-path">Соцсети / <span>Мультипоиск</span></div>
@@ -702,9 +874,7 @@
       </div>
 
       <div class="card" data-type="web" data-access="free">
-        <div class="card-head">
-          <div class="card-title"><div class="card-icon">💬</div><div class="card-name">TGStat</div></div>
-        </div>
+        <div class="card-head"><div class="card-title"><div class="card-icon">💬</div><div class="card-name">TGStat</div></div></div>
         <div class="card-desc">Поиск публичных Telegram-каналов</div>
         <div class="card-footer">
           <div class="card-path">Соцсети / <span>Telegram</span></div>
@@ -713,9 +883,7 @@
       </div>
 
       <div class="card" data-type="web" data-access="free">
-        <div class="card-head">
-          <div class="card-title"><div class="card-icon">🎬</div><div class="card-name">YouTube Metadata</div></div>
-        </div>
+        <div class="card-head"><div class="card-title"><div class="card-icon">🎬</div><div class="card-name">YouTube Metadata</div></div></div>
         <div class="card-desc">Метаданные YouTube-видео и каналов</div>
         <div class="card-footer">
           <div class="card-path">Соцсети / <span>YouTube</span></div>
@@ -723,10 +891,91 @@
         </div>
       </div>
 
+      <div class="card" data-type="web" data-access="free">
+        <div class="card-head"><div class="card-title"><div class="card-icon">📘</div><div class="card-name">Who Posted What</div></div></div>
+        <div class="card-desc">Поиск постов Facebook по дате и ключевым словам</div>
+        <div class="card-footer">
+          <div class="card-path">Соцсети / <span>Facebook</span></div>
+          <a class="card-link" href="https://www.whopostedwhat.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+
+      <div class="card" data-type="web" data-access="free">
+        <div class="card-head"><div class="card-title"><div class="card-icon">👽</div><div class="card-name">Reddit Search</div></div></div>
+        <div class="card-desc">Продвинутый поиск по постам Reddit</div>
+        <div class="card-footer">
+          <div class="card-path">Соцсети / <span>Reddit</span></div>
+          <a class="card-link" href="https://www.reddit.com/search/" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+
+      <div class="card" data-type="web" data-access="free">
+        <div class="card-head"><div class="card-title"><div class="card-icon">🎵</div><div class="card-name">Snaptik</div></div></div>
+        <div class="card-desc">Скачивание видео TikTok без водяного знака</div>
+        <div class="card-footer">
+          <div class="card-path">Соцсети / <span>TikTok</span></div>
+          <a class="card-link" href="https://snaptik.app" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+
+      <div class="card" data-type="web" data-access="free">
+        <div class="card-head"><div class="card-title"><div class="card-icon">💼</div><div class="card-name">LinkedIn</div></div></div>
+        <div class="card-desc">Поиск сотрудников по компаниям и должностям</div>
+        <div class="card-footer">
+          <div class="card-path">Соцсети / <span>LinkedIn</span></div>
+          <a class="card-link" href="https://www.linkedin.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+
+      <div class="card" data-type="web" data-access="free">
+        <div class="card-head"><div class="card-title"><div class="card-icon">📌</div><div class="card-name">Pinterest Search</div></div></div>
+        <div class="card-desc">Поиск пинов и профилей Pinterest</div>
+        <div class="card-footer">
+          <div class="card-path">Соцсети / <span>Pinterest</span></div>
+          <a class="card-link" href="https://pinterest.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+
+      <div class="card" data-type="web" data-access="free">
+        <div class="card-head"><div class="card-title"><div class="card-icon">🎮</div><div class="card-name">Discord Lookup</div></div></div>
+        <div class="card-desc">Поиск Discord-профиля по ID</div>
+        <div class="card-footer">
+          <div class="card-path">Соцсети / <span>Discord</span></div>
+          <a class="card-link" href="https://discordlookup.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+
+      <div class="card" data-type="web" data-access="free">
+        <div class="card-head"><div class="card-title"><div class="card-icon">📷</div><div class="card-name">Imgur Search</div></div></div>
+        <div class="card-desc">Поиск по картинкам Imgur</div>
+        <div class="card-footer">
+          <div class="card-path">Соцсети / <span>Imgur</span></div>
+          <a class="card-link" href="https://imgur.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+
+      <div class="card" data-type="web" data-access="free">
+        <div class="card-head"><div class="card-title"><div class="card-icon">🐦</div><div class="card-name">TweetDeck</div></div></div>
+        <div class="card-desc">Мониторинг Twitter в реальном времени</div>
+        <div class="card-footer">
+          <div class="card-path">Соцсети / <span>Twitter / X</span></div>
+          <a class="card-link" href="https://tweetdeck.twitter.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+
+      <div class="card" data-type="web" data-access="free">
+        <div class="card-head"><div class="card-title"><div class="card-icon">🎥</div><div class="card-name">Twitch Tools</div></div></div>
+        <div class="card-desc">Аналитика стримов и каналов Twitch</div>
+        <div class="card-footer">
+          <div class="card-path">Соцсети / <span>Twitch</span></div>
+          <a class="card-link" href="https://twitchtracker.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- СЕТИ И ДОМЕНЫ -->
+  <!-- ===================== СЕТИ И ДОМЕНЫ ===================== -->
   <section class="category" data-category="network">
     <div class="cat-header">
       <h2>Сети и домены <span class="count">0</span></h2>
@@ -737,9 +986,7 @@
     <div class="cat-body">
 
       <div class="card" data-type="web" data-access="freemium">
-        <div class="card-head">
-          <div class="card-title"><div class="card-icon">🌐</div><div class="card-name">Shodan</div></div>
-        </div>
+        <div class="card-head"><div class="card-title"><div class="card-icon">🌐</div><div class="card-name">Shodan</div></div></div>
         <div class="card-desc">Поисковик интернет-устройств и портов</div>
         <div class="card-footer">
           <div class="card-path">Сети / <span>IoT</span></div>
@@ -748,9 +995,7 @@
       </div>
 
       <div class="card" data-type="web" data-access="freemium">
-        <div class="card-head">
-          <div class="card-title"><div class="card-icon">🔍</div><div class="card-name">Censys</div></div>
-        </div>
+        <div class="card-head"><div class="card-title"><div class="card-icon">🔍</div><div class="card-name">Censys</div></div></div>
         <div class="card-desc">Сканирование интернета и анализ хостов</div>
         <div class="card-footer">
           <div class="card-path">Сети / <span>Scanning</span></div>
@@ -759,9 +1004,7 @@
       </div>
 
       <div class="card" data-type="web" data-access="free">
-        <div class="card-head">
-          <div class="card-title"><div class="card-icon">🛡️</div><div class="card-name">VirusTotal</div></div>
-        </div>
+        <div class="card-head"><div class="card-title"><div class="card-icon">🛡️</div><div class="card-name">VirusTotal</div></div></div>
         <div class="card-desc">Анализ файлов, URL, доменов и IP</div>
         <div class="card-footer">
           <div class="card-path">Сети / <span>Security</span></div>
@@ -770,9 +1013,16 @@
       </div>
 
       <div class="card" data-type="web" data-access="free">
-        <div class="card-head">
-          <div class="card-title"><div class="card-icon">🔐</div><div class="card-name">crt.sh</div></div>
+        <div class="card-head"><div class="card-title"><div class="card-icon">📋</div><div class="card-name">Whois</div></div></div>
+        <div class="card-desc">Информация о владельце домена</div>
+        <div class="card-footer">
+          <div class="card-path">Сети / <span>Domain</span></div>
+          <a class="card-link" href="https://whois.domaintools.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
         </div>
+      </div>
+
+      <div class="card" data-type="web" data-access="free">
+        <div class="card-head"><div class="card-title"><div class="card-icon">🔐</div><div class="card-name">crt.sh</div></div></div>
         <div class="card-desc">Поиск поддоменов через SSL-сертификаты</div>
         <div class="card-footer">
           <div class="card-path">Сети / <span>Subdomains</span></div>
@@ -781,9 +1031,25 @@
       </div>
 
       <div class="card" data-type="web" data-access="free">
-        <div class="card-head">
-          <div class="card-title"><div class="card-icon">📡</div><div class="card-name">IPinfo</div></div>
+        <div class="card-head"><div class="card-title"><div class="card-icon">🌍</div><div class="card-name">ViewDNS</div></div></div>
+        <div class="card-desc">Набор инструментов для DNS и IP</div>
+        <div class="card-footer">
+          <div class="card-path">Сети / <span>DNS Tools</span></div>
+          <a class="card-link" href="https://viewdns.info" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
         </div>
+      </div>
+
+      <div class="card" data-type="web" data-access="free">
+        <div class="card-head"><div class="card-title"><div class="card-icon">🗺️</div><div class="card-name">DNSDumpster</div></div></div>
+        <div class="card-desc">Карта DNS-инфраструктуры домена</div>
+        <div class="card-footer">
+          <div class="card-path">Сети / <span>DNS Recon</span></div>
+          <a class="card-link" href="https://dnsdumpster.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+
+      <div class="card" data-type="web" data-access="free">
+        <div class="card-head"><div class="card-title"><div class="card-icon">📡</div><div class="card-name">IPinfo</div></div></div>
         <div class="card-desc">Геолокация и информация об IP</div>
         <div class="card-footer">
           <div class="card-path">Сети / <span>IP Lookup</span></div>
@@ -792,9 +1058,7 @@
       </div>
 
       <div class="card" data-type="web" data-access="free">
-        <div class="card-head">
-          <div class="card-title"><div class="card-icon">📶</div><div class="card-name">WiGLE</div></div>
-        </div>
+        <div class="card-head"><div class="card-title"><div class="card-icon">📶</div><div class="card-name">WiGLE</div></div></div>
         <div class="card-desc">База Wi-Fi сетей по всему миру</div>
         <div class="card-footer">
           <div class="card-path">Сети / <span>Wi-Fi Map</span></div>
@@ -802,10 +1066,64 @@
         </div>
       </div>
 
+      <div class="card" data-type="web" data-access="free">
+        <div class="card-head"><div class="card-title"><div class="card-icon">🔬</div><div class="card-name">URLScan.io</div></div></div>
+        <div class="card-desc">Анализ и сканирование URL на угрозы</div>
+        <div class="card-footer">
+          <div class="card-path">Сети / <span>URL Analysis</span></div>
+          <a class="card-link" href="https://urlscan.io" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+
+      <div class="card" data-type="web" data-access="free">
+        <div class="card-head"><div class="card-title"><div class="card-icon">🌐</div><div class="card-name">SecurityTrails</div></div></div>
+        <div class="card-desc">Исторические данные DNS и WHOIS</div>
+        <div class="card-footer">
+          <div class="card-path">Сети / <span>DNS History</span></div>
+          <a class="card-link" href="https://securitytrails.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+
+      <div class="card" data-type="web" data-access="free">
+        <div class="card-head"><div class="card-title"><div class="card-icon">🕸️</div><div class="card-name">BuiltWith</div></div></div>
+        <div class="card-desc">Определение технологий сайта</div>
+        <div class="card-footer">
+          <div class="card-path">Сети / <span>Tech Stack</span></div>
+          <a class="card-link" href="https://builtwith.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+
+      <div class="card" data-type="web" data-access="free">
+        <div class="card-head"><div class="card-title"><div class="card-icon">📊</div><div class="card-name">SimilarWeb</div></div></div>
+        <div class="card-desc">Аналитика трафика и статистика сайтов</div>
+        <div class="card-footer">
+          <div class="card-path">Сети / <span>Analytics</span></div>
+          <a class="card-link" href="https://similarweb.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+
+      <div class="card" data-type="web" data-access="free">
+        <div class="card-head"><div class="card-title"><div class="card-icon">🔎</div><div class="card-name">Netcraft</div></div></div>
+        <div class="card-desc">Информация о сайте, хостинге и владельце</div>
+        <div class="card-footer">
+          <div class="card-path">Сети / <span>Site Info</span></div>
+          <a class="card-link" href="https://sitereport.netcraft.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+
+      <div class="card" data-type="web" data-access="free">
+        <div class="card-head"><div class="card-title"><div class="card-icon">📧</div><div class="card-name">MXToolbox</div></div></div>
+        <div class="card-desc">Проверка MX, SMTP и DNS записей</div>
+        <div class="card-footer">
+          <div class="card-path">Сети / <span>MX/DNS</span></div>
+          <a class="card-link" href="https://mxtoolbox.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- ИЗОБРАЖЕНИЯ И ГЕО -->
+  <!-- ===================== ИЗОБРАЖЕНИЯ И ГЕО ===================== -->
   <section class="category" data-category="images">
     <div class="cat-header">
       <h2>Изображения и геолокация <span class="count">0</span></h2>
@@ -816,9 +1134,7 @@
     <div class="cat-body">
 
       <div class="card" data-type="web" data-access="free">
-        <div class="card-head">
-          <div class="card-title"><div class="card-icon">🖼️</div><div class="card-name">Google Images</div></div>
-        </div>
+        <div class="card-head"><div class="card-title"><div class="card-icon">🖼️</div><div class="card-name">Google Images</div></div></div>
         <div class="card-desc">Обратный поиск по картинке от Google</div>
         <div class="card-footer">
           <div class="card-path">Изображения / <span>Reverse Image</span></div>
@@ -827,9 +1143,7 @@
       </div>
 
       <div class="card" data-type="web" data-access="free">
-        <div class="card-head">
-          <div class="card-title"><div class="card-icon">🖼️</div><div class="card-name">Yandex Images</div></div>
-        </div>
+        <div class="card-head"><div class="card-title"><div class="card-icon">🖼️</div><div class="card-name">Yandex Images</div></div></div>
         <div class="card-desc">Лучший обратный поиск по лицу</div>
         <div class="card-footer">
           <div class="card-path">Изображения / <span>Reverse Image</span></div>
@@ -838,9 +1152,7 @@
       </div>
 
       <div class="card" data-type="web" data-access="free">
-        <div class="card-head">
-          <div class="card-title"><div class="card-icon">🔍</div><div class="card-name">TinEye</div></div>
-        </div>
+        <div class="card-head"><div class="card-title"><div class="card-icon">🔍</div><div class="card-name">TinEye</div></div></div>
         <div class="card-desc">Поиск источника изображения</div>
         <div class="card-footer">
           <div class="card-path">Изображения / <span>Reverse Image</span></div>
@@ -849,9 +1161,7 @@
       </div>
 
       <div class="card" data-type="web" data-access="free">
-        <div class="card-head">
-          <div class="card-title"><div class="card-icon">📷</div><div class="card-name">ExifData</div></div>
-        </div>
+        <div class="card-head"><div class="card-title"><div class="card-icon">📷</div><div class="card-name">ExifData</div></div></div>
         <div class="card-desc">Просмотр EXIF-метаданных фото</div>
         <div class="card-footer">
           <div class="card-path">Изображения / <span>EXIF</span></div>
@@ -860,9 +1170,16 @@
       </div>
 
       <div class="card" data-type="web" data-access="free">
-        <div class="card-head">
-          <div class="card-title"><div class="card-icon">☀️</div><div class="card-name">SunCalc</div></div>
+        <div class="card-head"><div class="card-title"><div class="card-icon">🔬</div><div class="card-name">FotoForensics</div></div></div>
+        <div class="card-desc">Анализ подлинности фотографий (ELA)</div>
+        <div class="card-footer">
+          <div class="card-path">Изображения / <span>Forensics</span></div>
+          <a class="card-link" href="https://fotoforensics.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
         </div>
+      </div>
+
+      <div class="card" data-type="web" data-access="free">
+        <div class="card-head"><div class="card-title"><div class="card-icon">☀️</div><div class="card-name">SunCalc</div></div></div>
         <div class="card-desc">Расчёт положения солнца — геолокация по теням</div>
         <div class="card-footer">
           <div class="card-path">Геолокация / <span>Sun Position</span></div>
@@ -871,9 +1188,16 @@
       </div>
 
       <div class="card" data-type="web" data-access="free">
-        <div class="card-head">
-          <div class="card-title"><div class="card-icon">🗺️</div><div class="card-name">Mapillary</div></div>
+        <div class="card-head"><div class="card-title"><div class="card-icon">🏔️</div><div class="card-name">PeakVisor</div></div></div>
+        <div class="card-desc">Идентификация горных вершин на фото</div>
+        <div class="card-footer">
+          <div class="card-path">Геолокация / <span>Mountains</span></div>
+          <a class="card-link" href="https://peakvisor.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
         </div>
+      </div>
+
+      <div class="card" data-type="web" data-access="free">
+        <div class="card-head"><div class="card-title"><div class="card-icon">🗺️</div><div class="card-name">Mapillary</div></div></div>
         <div class="card-desc">Краудсорсинговые фото улиц со всего мира</div>
         <div class="card-footer">
           <div class="card-path">Геолокация / <span>Street View</span></div>
@@ -881,10 +1205,46 @@
         </div>
       </div>
 
+      <div class="card" data-type="web" data-access="free">
+        <div class="card-head"><div class="card-title"><div class="card-icon">🛰️</div><div class="card-name">Sentinel Hub</div></div></div>
+        <div class="card-desc">Спутниковые снимки и анализ изменений</div>
+        <div class="card-footer">
+          <div class="card-path">Геолокация / <span>Satellite</span></div>
+          <a class="card-link" href="https://www.sentinel-hub.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+
+      <div class="card" data-type="web" data-access="free">
+        <div class="card-head"><div class="card-title"><div class="card-icon">🌍</div><div class="card-name">Overpass Turbo</div></div></div>
+        <div class="card-desc">Запросы к OpenStreetMap по объектам</div>
+        <div class="card-footer">
+          <div class="card-path">Геолокация / <span>OSM</span></div>
+          <a class="card-link" href="https://overpass-turbo.eu" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+
+      <div class="card" data-type="web" data-access="free">
+        <div class="card-head"><div class="card-title"><div class="card-icon">🌐</div><div class="card-name">GeoSpy</div></div></div>
+        <div class="card-desc">AI-определение локации по фото</div>
+        <div class="card-footer">
+          <div class="card-path">Геолокация / <span>AI</span></div>
+          <a class="card-link" href="https://geospy.ai" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+
+      <div class="card" data-type="web" data-access="free">
+        <div class="card-head"><div class="card-title"><div class="card-icon">🛰️</div><div class="card-name">Google Earth</div></div></div>
+        <div class="card-desc">3D-снимки планеты и исторические снимки</div>
+        <div class="card-footer">
+          <div class="card-path">Геолокация / <span>Satellite</span></div>
+          <a class="card-link" href="https://earth.google.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- УТЕЧКИ -->
+  <!-- ===================== УТЕЧКИ ===================== -->
   <section class="category" data-category="leaks">
     <div class="cat-header">
       <h2>Утечки и архивы <span class="count">0</span></h2>
@@ -895,9 +1255,7 @@
     <div class="cat-body">
 
       <div class="card" data-type="web" data-access="free">
-        <div class="card-head">
-          <div class="card-title"><div class="card-icon">📚</div><div class="card-name">Wayback Machine</div></div>
-        </div>
+        <div class="card-head"><div class="card-title"><div class="card-icon">📚</div><div class="card-name">Wayback Machine</div></div></div>
         <div class="card-desc">Архив старых версий сайтов</div>
         <div class="card-footer">
           <div class="card-path">Архивы / <span>Web Archive</span></div>
@@ -906,10 +1264,8 @@
       </div>
 
       <div class="card" data-type="web" data-access="free">
-        <div class="card-head">
-          <div class="card-title"><div class="card-icon">🗄️</div><div class="card-name">archive.today</div></div>
-        </div>
-        <div class="card-desc">Быстрое сохранение страниц в вечный архив</div>
+        <div class="card-head"><div class="card-title"><div class="card-icon">🗄️</div><div class="card-name">archive.today</div></div></div>
+        <div class="card-desc">Быстрое сохранение страниц в архив</div>
         <div class="card-footer">
           <div class="card-path">Архивы / <span>Web Archive</span></div>
           <a class="card-link" href="https://archive.ph" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
@@ -917,9 +1273,7 @@
       </div>
 
       <div class="card" data-type="web" data-access="paid">
-        <div class="card-head">
-          <div class="card-title"><div class="card-icon">🔓</div><div class="card-name">DeHashed</div></div>
-        </div>
+        <div class="card-head"><div class="card-title"><div class="card-icon">🔓</div><div class="card-name">DeHashed</div></div></div>
         <div class="card-desc">Поиск по базам утечек (email, пароли)</div>
         <div class="card-footer">
           <div class="card-path">Утечки / <span>Leak DB</span></div>
@@ -928,9 +1282,7 @@
       </div>
 
       <div class="card" data-type="web" data-access="freemium">
-        <div class="card-head">
-          <div class="card-title"><div class="card-icon">🕵️</div><div class="card-name">Intelligence X</div></div>
-        </div>
+        <div class="card-head"><div class="card-title"><div class="card-icon">🕵️</div><div class="card-name">Intelligence X</div></div></div>
         <div class="card-desc">Поиск в даркнете и утечках</div>
         <div class="card-footer">
           <div class="card-path">Утечки / <span>Dark Web</span></div>
@@ -939,9 +1291,7 @@
       </div>
 
       <div class="card" data-type="web" data-access="freemium">
-        <div class="card-head">
-          <div class="card-title"><div class="card-icon">🔐</div><div class="card-name">LeakCheck</div></div>
-        </div>
+        <div class="card-head"><div class="card-title"><div class="card-icon">🔐</div><div class="card-name">LeakCheck</div></div></div>
         <div class="card-desc">Проверка утечек по email, логину, домену</div>
         <div class="card-footer">
           <div class="card-path">Утечки / <span>Leak DB</span></div>
@@ -950,9 +1300,7 @@
       </div>
 
       <div class="card" data-type="web" data-access="free">
-        <div class="card-head">
-          <div class="card-title"><div class="card-icon">📄</div><div class="card-name">CachedView</div></div>
-        </div>
+        <div class="card-head"><div class="card-title"><div class="card-icon">📄</div><div class="card-name">CachedView</div></div></div>
         <div class="card-desc">Кэшированные версии страниц</div>
         <div class="card-footer">
           <div class="card-path">Архивы / <span>Cache</span></div>
@@ -960,10 +1308,46 @@
         </div>
       </div>
 
+      <div class="card" data-type="web" data-access="free">
+        <div class="card-head"><div class="card-title"><div class="card-icon">📰</div><div class="card-name">Google News Archive</div></div></div>
+        <div class="card-desc">Архив газет и новостей за прошлые годы</div>
+        <div class="card-footer">
+          <div class="card-path">Архивы / <span>News</span></div>
+          <a class="card-link" href="https://news.google.com/newspapers" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+
+      <div class="card" data-type="web" data-access="free">
+        <div class="card-head"><div class="card-title"><div class="card-icon">💻</div><div class="card-name">SearchCode</div></div></div>
+        <div class="card-desc">Поиск по исходному коду в репозиториях</div>
+        <div class="card-footer">
+          <div class="card-path">Код / <span>Source Search</span></div>
+          <a class="card-link" href="https://searchcode.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+
+      <div class="card" data-type="web" data-access="paid">
+        <div class="card-head"><div class="card-title"><div class="card-icon">🔑</div><div class="card-name">Leak-Lookup</div></div></div>
+        <div class="card-desc">Поиск по 15+ млрд утёкших записей</div>
+        <div class="card-footer">
+          <div class="card-path">Утечки / <span>Leak DB</span></div>
+          <a class="card-link" href="https://leak-lookup.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+
+      <div class="card" data-type="web" data-access="paid">
+        <div class="card-head"><div class="card-title"><div class="card-icon">🗃️</div><div class="card-name">Snusbase</div></div></div>
+        <div class="card-desc">Поиск по крупнейшим базам утечек</div>
+        <div class="card-footer">
+          <div class="card-path">Утечки / <span>Leak DB</span></div>
+          <a class="card-link" href="https://snusbase.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- КРИПТА -->
+  <!-- ===================== КРИПТА ===================== -->
   <section class="category" data-category="crypto">
     <div class="cat-header">
       <h2>Криптовалюты и финансы <span class="count">0</span></h2>
@@ -974,9 +1358,7 @@
     <div class="cat-body">
 
       <div class="card" data-type="web" data-access="free">
-        <div class="card-head">
-          <div class="card-title"><div class="card-icon">₿</div><div class="card-name">Blockchain.com</div></div>
-        </div>
+        <div class="card-head"><div class="card-title"><div class="card-icon">₿</div><div class="card-name">Blockchain.com</div></div></div>
         <div class="card-desc">Просмотр транзакций Bitcoin и Ethereum</div>
         <div class="card-footer">
           <div class="card-path">Крипта / <span>Blockchain</span></div>
@@ -985,10 +1367,8 @@
       </div>
 
       <div class="card" data-type="web" data-access="free">
-        <div class="card-head">
-          <div class="card-title"><div class="card-icon">🔗</div><div class="card-name">Etherscan</div></div>
-        </div>
-        <div class="card-desc">Explorer блокчейна Ethereum</div>
+        <div class="card-head"><div class="card-title"><div class="card-icon">🔗</div><div class="card-name">Etherscan</div></div></div>
+        <div class="card-desc">Explorer блокчейна Ethereum с метками</div>
         <div class="card-footer">
           <div class="card-path">Крипта / <span>Ethereum</span></div>
           <a class="card-link" href="https://etherscan.io" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
@@ -996,9 +1376,7 @@
       </div>
 
       <div class="card" data-type="web" data-access="free">
-        <div class="card-head">
-          <div class="card-title"><div class="card-icon">💰</div><div class="card-name">Wallet Explorer</div></div>
-        </div>
+        <div class="card-head"><div class="card-title"><div class="card-icon">💰</div><div class="card-name">Wallet Explorer</div></div></div>
         <div class="card-desc">Баланс и история крипто-кошельков</div>
         <div class="card-footer">
           <div class="card-path">Крипта / <span>Wallet</span></div>
@@ -1007,9 +1385,7 @@
       </div>
 
       <div class="card" data-type="web" data-access="free">
-        <div class="card-head">
-          <div class="card-title"><div class="card-icon">💵</div><div class="card-name">OpenCorporates</div></div>
-        </div>
+        <div class="card-head"><div class="card-title"><div class="card-icon">💵</div><div class="card-name">OpenCorporates</div></div></div>
         <div class="card-desc">База данных компаний со всего мира</div>
         <div class="card-footer">
           <div class="card-path">Финансы / <span>Companies</span></div>
@@ -1017,10 +1393,46 @@
         </div>
       </div>
 
+      <div class="card" data-type="web" data-access="free">
+        <div class="card-head"><div class="card-title"><div class="card-icon">📊</div><div class="card-name">CoinMarketCap</div></div></div>
+        <div class="card-desc">Котировки и статистика криптовалют</div>
+        <div class="card-footer">
+          <div class="card-path">Крипта / <span>Market Data</span></div>
+          <a class="card-link" href="https://coinmarketcap.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+
+      <div class="card" data-type="web" data-access="free">
+        <div class="card-head"><div class="card-title"><div class="card-icon">🔍</div><div class="card-name">Chainalysis</div></div></div>
+        <div class="card-desc">Анализ криптотранзакций и отслеживание</div>
+        <div class="card-footer">
+          <div class="card-path">Крипта / <span>Analytics</span></div>
+          <a class="card-link" href="https://www.chainalysis.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+
+      <div class="card" data-type="web" data-access="free">
+        <div class="card-head"><div class="card-title"><div class="card-icon">🪙</div><div class="card-name">BitRef</div></div></div>
+        <div class="card-desc">Проверка Bitcoin-адресов и связей</div>
+        <div class="card-footer">
+          <div class="card-path">Крипта / <span>Bitcoin</span></div>
+          <a class="card-link" href="https://bitref.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+
+      <div class="card" data-type="web" data-access="free">
+        <div class="card-head"><div class="card-title"><div class="card-icon">📈</div><div class="card-name">OXT</div></div></div>
+        <div class="card-desc">Исследование блокчейна Bitcoin с графами</div>
+        <div class="card-footer">
+          <div class="card-path">Крипта / <span>Bitcoin</span></div>
+          <a class="card-link" href="https://oxt.me" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+
     </div>
   </section>
 
-  <!-- ПЕНТЕСТ -->
+  <!-- ===================== ПЕНТЕСТ ===================== -->
   <section class="category" data-category="pentest">
     <div class="cat-header">
       <h2>Пентест и разведка <span class="count">0</span></h2>
@@ -1031,9 +1443,7 @@
     <div class="cat-body">
 
       <div class="card" data-type="cli" data-access="free">
-        <div class="card-head">
-          <div class="card-title"><div class="card-icon">🦈</div><div class="card-name">theHarvester</div></div>
-        </div>
+        <div class="card-head"><div class="card-title"><div class="card-icon">🦈</div><div class="card-name">theHarvester</div></div></div>
         <div class="card-desc">Сбор email, поддоменов, имён сотрудников</div>
         <div class="card-footer">
           <div class="card-path">Пентест / <span>Recon</span></div>
@@ -1042,9 +1452,7 @@
       </div>
 
       <div class="card" data-type="web" data-access="paid">
-        <div class="card-head">
-          <div class="card-title"><div class="card-icon">🔎</div><div class="card-name">Maltego</div></div>
-        </div>
+        <div class="card-head"><div class="card-title"><div class="card-icon">🔎</div><div class="card-name">Maltego</div></div></div>
         <div class="card-desc">Визуализация связей между людьми и доменами</div>
         <div class="card-footer">
           <div class="card-path">Пентест / <span>Link Analysis</span></div>
@@ -1053,9 +1461,7 @@
       </div>
 
       <div class="card" data-type="cli" data-access="free">
-        <div class="card-head">
-          <div class="card-title"><div class="card-icon">🌐</div><div class="card-name">SpiderFoot</div></div>
-        </div>
+        <div class="card-head"><div class="card-title"><div class="card-icon">🌐</div><div class="card-name">SpiderFoot</div></div></div>
         <div class="card-desc">Автоматизированная разведка по IP и домену</div>
         <div class="card-footer">
           <div class="card-path">Пентест / <span>Automation</span></div>
@@ -1064,9 +1470,16 @@
       </div>
 
       <div class="card" data-type="cli" data-access="free">
-        <div class="card-head">
-          <div class="card-title"><div class="card-icon">🛰️</div><div class="card-name">Nmap</div></div>
+        <div class="card-head"><div class="card-title"><div class="card-icon">🔍</div><div class="card-name">Recon-ng</div></div></div>
+        <div class="card-desc">Фреймворк для веб-разведки на Python</div>
+        <div class="card-footer">
+          <div class="card-path">Пентест / <span>Framework</span></div>
+          <a class="card-link" href="https://github.com/lanmaster53/recon-ng" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
         </div>
+      </div>
+
+      <div class="card" data-type="cli" data-access="free">
+        <div class="card-head"><div class="card-title"><div class="card-icon">🛰️</div><div class="card-name">Nmap</div></div></div>
         <div class="card-desc">Сканирование портов и определение сервисов</div>
         <div class="card-footer">
           <div class="card-path">Пентест / <span>Port Scan</span></div>
@@ -1075,9 +1488,7 @@
       </div>
 
       <div class="card" data-type="cli" data-access="free">
-        <div class="card-head">
-          <div class="card-title"><div class="card-icon">🔐</div><div class="card-name">Wireshark</div></div>
-        </div>
+        <div class="card-head"><div class="card-title"><div class="card-icon">🔐</div><div class="card-name">Wireshark</div></div></div>
         <div class="card-desc">Анализатор трафика и сетевых пакетов</div>
         <div class="card-footer">
           <div class="card-path">Пентест / <span>Traffic</span></div>
@@ -1086,13 +1497,56 @@
       </div>
 
       <div class="card" data-type="cli" data-access="free">
-        <div class="card-head">
-          <div class="card-title"><div class="card-icon">📡</div><div class="card-name">Amass</div></div>
+        <div class="card-head"><div class="card-title"><div class="card-icon">🔓</div><div class="card-name">Metasploit</div></div></div>
+        <div class="card-desc">Фреймворк для тестирования уязвимостей</div>
+        <div class="card-footer">
+          <div class="card-path">Пентест / <span>Exploitation</span></div>
+          <a class="card-link" href="https://www.metasploit.com" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
         </div>
-        <div class="card-desc">Глубокое сканирование поддоменов</div>
+      </div>
+
+      <div class="card" data-type="cli" data-access="free">
+        <div class="card-head"><div class="card-title"><div class="card-icon">📡</div><div class="card-name">Amass</div></div></div>
+        <div class="card-desc">Глубокое сканирование поддоменов и ASN</div>
         <div class="card-footer">
           <div class="card-path">Пентест / <span>Subdomain</span></div>
           <a class="card-link" href="https://github.com/owasp-amass/amass" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+
+      <div class="card" data-type="cli" data-access="free">
+        <div class="card-head"><div class="card-title"><div class="card-icon">🎯</div><div class="card-name">Nikto</div></div></div>
+        <div class="card-desc">Сканер веб-серверов на уязвимости</div>
+        <div class="card-footer">
+          <div class="card-path">Пентест / <span>Web Scan</span></div>
+          <a class="card-link" href="https://github.com/sullo/nikto" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+
+      <div class="card" data-type="cli" data-access="free">
+        <div class="card-head"><div class="card-title"><div class="card-icon">🔦</div><div class="card-name">Gobuster</div></div></div>
+        <div class="card-desc">Брутфорс директорий и поддоменов</div>
+        <div class="card-footer">
+          <div class="card-path">Пентест / <span>Bruteforce</span></div>
+          <a class="card-link" href="https://github.com/OJ/gobuster" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+
+      <div class="card" data-type="cli" data-access="free">
+        <div class="card-head"><div class="card-title"><div class="card-icon">💥</div><div class="card-name">SQLMap</div></div></div>
+        <div class="card-desc">Автоматическое обнаружение SQL-инъекций</div>
+        <div class="card-footer">
+          <div class="card-path">Пентест / <span>SQLi</span></div>
+          <a class="card-link" href="https://sqlmap.org" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
+        </div>
+      </div>
+
+      <div class="card" data-type="cli" data-access="free">
+        <div class="card-head"><div class="card-title"><div class="card-icon">🌊</div><div class="card-name">Aircrack-ng</div></div></div>
+        <div class="card-desc">Аудит Wi-Fi сетей и взлом WPA/WEP</div>
+        <div class="card-footer">
+          <div class="card-path">Пентест / <span>Wi-Fi</span></div>
+          <a class="card-link" href="https://www.aircrack-ng.org" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a>
         </div>
       </div>
 
@@ -1134,7 +1588,7 @@
   var FILTERS = {
     category: [
       { value: 'all',     label: 'Все' },
-      { value: 'deanon',  label: '💀 Деанон' },
+      { value: 'deanon',  label: 'Деанон' },
       { value: 'search',  label: 'Поисковые системы' },
       { value: 'people',  label: 'Поиск людей' },
       { value: 'social',  label: 'Социальные сети' },
