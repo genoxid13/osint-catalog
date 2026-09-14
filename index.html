@@ -7,11 +7,15 @@
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
-:root{--bg:#0a0a0a;--bg2:#121212;--card:#141414;--card2:#1a1a1a;--br:#232323;--br2:#2a2a2a;--tx:#f5f5f5;--tx2:#a0a0a0;--tx3:#6b6b6b;--bl:#4a9eff;--gd:#fbbf24;--tg:#2AABEE}
+:root{--bg:#0a0a0a;--bg2:#121212;--card:#141414;--card2:#1a1a1a;--br:#232323;--br2:#2a2a2a;--tx:#f5f5f5;--tx2:#a0a0a0;--tx3:#6b6b6b;--bl:#4a9eff;--gd:#fbbf24;--tg:#2AABEE;--rd:#ef4444;--gr:#22c55e}
 html{scroll-behavior:smooth}
 body{background:var(--bg);color:var(--tx);font-family:Inter,sans-serif;font-size:15px;line-height:1.5;min-height:100vh;overflow-x:hidden;opacity:0;animation:fi .5s ease forwards}
 @keyframes fi{to{opacity:1}}
-.topbar{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.9);backdrop-filter:blur(20px);padding:12px 16px;display:flex;justify-content:flex-end;align-items:center;gap:8px;border-bottom:1px solid var(--br)}
+.topbar{position:sticky;top:0;z-index:100;background:rgba(10,10,10,.9);backdrop-filter:blur(20px);padding:12px 16px;display:flex;justify-content:space-between;align-items:center;gap:8px;border-bottom:1px solid var(--br)}
+.tb-left,.tb-right{display:flex;gap:8px;align-items:center}
+.face-btn{background:linear-gradient(135deg,rgba(74,158,255,.15),rgba(168,85,247,.15));border:1px solid rgba(74,158,255,.4);color:var(--tx);font-family:inherit;font-size:13px;font-weight:600;padding:8px 14px;border-radius:8px;cursor:pointer;display:flex;align-items:center;gap:8px;transition:.3s}
+.face-btn:hover{background:linear-gradient(135deg,rgba(74,158,255,.25),rgba(168,85,247,.25));transform:translateY(-1px);box-shadow:0 8px 20px rgba(74,158,255,.2)}
+.face-btn svg{width:16px;height:16px}
 .lang{display:flex;gap:2px;background:var(--card);border:1px solid var(--br);border-radius:8px;padding:3px}
 .lang button{background:0;border:0;color:var(--tx2);font-size:12px;font-weight:600;padding:6px 12px;border-radius:6px;cursor:pointer;font-family:inherit;transition:.25s}
 .lang button:hover{color:var(--tx);transform:scale(1.05)}
@@ -121,19 +125,71 @@ footer a.tg{color:var(--tg);text-decoration:none;display:inline-flex;align-items
 footer a.tg:hover{background:rgba(42,171,238,.15);border-color:rgba(42,171,238,.5);transform:translateY(-2px);box-shadow:0 8px 24px rgba(42,171,238,.2)}
 footer a.tg svg{width:18px;height:18px;fill:var(--tg);transition:.3s}
 footer a.tg:hover svg{transform:rotate(-15deg) scale(1.1)}
-@media(max-width:520px){h1{font-size:26px}.logo{width:70px}.filters{grid-template-columns:1fr}.cn{font-size:16px}}
+
+/* ===== МОДАЛКА ПОИСКА ПО ФОТО ===== */
+.modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.85);backdrop-filter:blur(12px);z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;visibility:hidden;transition:.3s}
+.modal-bg.show{opacity:1;visibility:visible}
+.modal{background:var(--card);border:1px solid var(--br);border-radius:20px;max-width:640px;width:100%;max-height:90vh;overflow-y:auto;transform:scale(.95) translateY(20px);transition:.4s cubic-bezier(.16,1,.3,1);box-shadow:0 24px 80px rgba(0,0,0,.6)}
+.modal-bg.show .modal{transform:none}
+.m-head{padding:24px 24px 16px;border-bottom:1px solid var(--br);display:flex;justify-content:space-between;align-items:flex-start;gap:16px;position:sticky;top:0;background:var(--card);z-index:2}
+.m-head h3{font-size:20px;font-weight:600;display:flex;align-items:center;gap:10px}
+.m-head h3 svg{width:22px;height:22px;color:var(--bl)}
+.m-close{background:0;border:1px solid var(--br);border-radius:8px;width:34px;height:34px;display:flex;align-items:center;justify-content:center;color:var(--tx2);cursor:pointer;transition:.25s;flex-shrink:0}
+.m-close:hover{border-color:var(--rd);color:var(--rd);transform:rotate(90deg)}
+.m-close svg{width:16px;height:16px}
+.m-body{padding:24px}
+.m-desc{color:var(--tx2);font-size:14px;line-height:1.6;margin-bottom:20px}
+.drop-zone{border:2px dashed var(--br2);border-radius:14px;padding:40px 20px;text-align:center;cursor:pointer;transition:.3s;background:var(--bg2);position:relative;overflow:hidden}
+.drop-zone:hover,.drop-zone.drag{border-color:var(--bl);background:rgba(74,158,255,.05)}
+.drop-zone svg{width:48px;height:48px;color:var(--tx3);margin-bottom:12px;transition:.3s}
+.drop-zone:hover svg{color:var(--bl);transform:translateY(-4px)}
+.drop-zone .dz-title{font-size:15px;font-weight:600;margin-bottom:6px;color:var(--tx)}
+.drop-zone .dz-hint{font-size:13px;color:var(--tx3)}
+.preview{display:none;flex-direction:column;gap:16px;align-items:center;padding:20px;text-align:center}
+.preview.show{display:flex}
+.preview img{max-width:200px;max-height:200px;border-radius:14px;border:2px solid var(--br2);box-shadow:0 12px 32px rgba(0,0,0,.4)}
+.preview .file-name{font-size:13px;color:var(--tx2);word-break:break-all}
+.preview .change-btn{background:var(--card2);border:1px solid var(--br2);color:var(--tx);font-family:inherit;font-size:13px;padding:8px 16px;border-radius:8px;cursor:pointer;transition:.25s}
+.preview .change-btn:hover{border-color:var(--bl);color:var(--bl)}
+.services{margin-top:24px;display:none}
+.services.show{display:block;animation:fu .4s}
+.services h4{font-size:15px;font-weight:600;margin-bottom:14px;color:var(--tx);display:flex;align-items:center;gap:8px}
+.services h4 .dot{width:8px;height:8px;border-radius:50%;background:var(--gr);animation:pulse 2s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 6px rgba(34,197,94,0)}}
+.svc-list{display:grid;gap:10px}
+.svc{display:flex;align-items:center;gap:14px;padding:14px;background:var(--bg2);border:1px solid var(--br);border-radius:12px;text-decoration:none;color:inherit;transition:.25s}
+.svc:hover{border-color:var(--br2);background:var(--card2);transform:translateX(4px)}
+.svc-icon{width:36px;height:36px;flex-shrink:0;display:flex;align-items:center;justify-content:center;border-radius:9px;font-size:18px;background:#1a1a1a}
+.svc-info{flex:1;min-width:0}
+.svc-name{font-size:14px;font-weight:600;color:var(--tx);margin-bottom:2px}
+.svc-desc{font-size:12.5px;color:var(--tx3);line-height:1.4}
+.svc-arrow{color:var(--tx3);flex-shrink:0;transition:.25s}
+.svc:hover .svc-arrow{color:var(--bl);transform:translateX(3px)}
+.svc-arrow svg{width:16px;height:16px}
+.m-note{margin-top:20px;padding:14px;background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.2);border-radius:10px;font-size:12.5px;color:var(--tx2);line-height:1.5;display:flex;gap:10px}
+.m-note svg{width:18px;height:18px;color:var(--gd);flex-shrink:0;margin-top:1px}
+#fileInput{display:none}
+@media(max-width:520px){h1{font-size:26px}.logo{width:70px}.filters{grid-template-columns:1fr}.cn{font-size:16px}.face-btn span{display:none}.face-btn{padding:8px 10px}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 </style>
 </head>
 <body>
 
 <div class="topbar">
-  <div class="lang">
-    <button class="active" data-lang="ru">RU</button>
-    <button data-lang="en">EN</button>
+  <div class="tb-left">
+    <button class="face-btn" id="faceBtn">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="10" r="3"/><path d="M6.2 20a6 6 0 0 1 11.6 0"/></svg>
+      <span data-i18n="faceBtn">Поиск по фото</span>
+    </button>
   </div>
-  <div class="globe">
-    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+  <div class="tb-right">
+    <div class="lang">
+      <button class="active" data-lang="ru">RU</button>
+      <button data-lang="en">EN</button>
+    </div>
+    <div class="globe">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="10"/><path d="M2 12h20M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>
+    </div>
   </div>
 </div>
 
@@ -200,246 +256,298 @@ footer a.tg:hover svg{transform:rotate(-15deg) scale(1.1)}
   </div>
 </footer>
 
+<!-- ===== МОДАЛЬНОЕ ОКНО ПОИСКА ПО ФОТО ===== -->
+<div class="modal-bg" id="faceModal">
+  <div class="modal">
+    <div class="m-head">
+      <h3>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><circle cx="12" cy="10" r="3"/><path d="M6.2 20a6 6 0 0 1 11.6 0"/></svg>
+        <span data-i18n="mTitle">Поиск по фото лица</span>
+      </h3>
+      <button class="m-close" id="mClose"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg></button>
+    </div>
+    <div class="m-body">
+      <p class="m-desc" data-i18n="mDesc">Загрузите фото лица — мы покажем сервисы, где можно проверить это фото в открытых источниках. Загрузка происходит только в вашем браузере, никуда не отправляется.</p>
+
+      <div class="drop-zone" id="dropZone">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+        <div class="dz-title" data-i18n="dzTitle">Перетащите фото сюда</div>
+        <div class="dz-hint" data-i18n="dzHint">или нажмите, чтобы выбрать файл (JPG, PNG, WEBP)</div>
+      </div>
+
+      <div class="preview" id="preview">
+        <img id="previewImg" alt="preview">
+        <div class="file-name" id="fileName"></div>
+        <button class="change-btn" id="changeBtn" data-i18n="changeBtn">Выбрать другое фото</button>
+      </div>
+
+      <div class="services" id="services">
+        <h4><span class="dot"></span><span data-i18n="svcTitle">Проверить это фото в:</span></h4>
+        <div class="svc-list">
+          <a class="svc" href="https://pimeyes.com/en" target="_blank">
+            <div class="svc-icon">🍑</div>
+            <div class="svc-info"><div class="svc-name">PimEyes</div><div class="svc-desc" data-i18n="s1">Поиск лиц по фото через AI — крупнейшая база</div></div>
+            <div class="svc-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+          </a>
+          <a class="svc" href="https://facecheck.id" target="_blank">
+            <div class="svc-icon">🎯</div>
+            <div class="svc-info"><div class="svc-name">FaceCheck.ID</div><div class="svc-desc" data-i18n="s2">AI-поиск человека по фото лица в соцсетях</div></div>
+            <div class="svc-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+          </a>
+          <a class="svc" href="https://yandex.ru/images/" target="_blank">
+            <div class="svc-icon">🖼️</div>
+            <div class="svc-info"><div class="svc-name">Яндекс.Картинки</div><div class="svc-desc" data-i18n="s3">Обратный поиск по лицу — лучший в рунете</div></div>
+            <div class="svc-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+          </a>
+          <a class="svc" href="https://lens.google.com" target="_blank">
+            <div class="svc-icon">🔍</div>
+            <div class="svc-info"><div class="svc-name">Google Lens</div><div class="svc-desc" data-i18n="s4">Обратный поиск по фото от Google</div></div>
+            <div class="svc-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+          </a>
+          <a class="svc" href="https://www.bing.com/visualsearch" target="_blank">
+            <div class="svc-icon">🖼️</div>
+            <div class="svc-info"><div class="svc-name">Bing Visual Search</div><div class="svc-desc" data-i18n="s5">Обратный поиск изображения от Microsoft</div></div>
+            <div class="svc-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+          </a>
+          <a class="svc" href="https://tineye.com" target="_blank">
+            <div class="svc-icon">🔎</div>
+            <div class="svc-info"><div class="svc-name">TinEye</div><div class="svc-desc" data-i18n="s6">Поиск источника и ранних версий изображения</div></div>
+            <div class="svc-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+          </a>
+          <a class="svc" href="https://fotoforensics.com" target="_blank">
+            <div class="svc-icon">🔬</div>
+            <div class="svc-info"><div class="svc-name">FotoForensics</div><div class="svc-desc" data-i18n="s7">Анализ подлинности фото (ELA-метод)</div></div>
+            <div class="svc-arrow"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+          </a>
+        </div>
+        <div class="m-note">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 9v4M12 17h.01M10.29 3.86 1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/></svg>
+          <span data-i18n="note">Сервисы открываются в новых вкладках — фото туда нужно загрузить вручную. Мы не отправляем ваше фото на сторонние серверы. Все сервисы принадлежат третьим лицам, используйте на свой риск и только для легальных целей.</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<input type="file" id="fileInput" accept="image/*">
+
 <script>
 (function(){
 'use strict';
 
-// ============ ДАННЫЕ КАТАЛОГА ============
-// Формат: [Название, Иконка, Описание_RU, Описание_EN, URL, Тип, Доступ]
-// Тип: web/cli/api | Доступ: free/freemium/paid
+// ============ КАТАЛОГ ============
 var CATALOG = {
-  deanon: {
-    ru: 'Деанон', en: 'Deanon',
-    tools: [
-      ['Sosok Monster','🔎','Поиск информации о людях: ФИО, телефон, email, соцсети','Search for people info: name, phone, email, socials','https://sosok.monster','web','freemium'],
-      ['Infinity Search','🔎','Поиск по номеру, ФИО, email, IP','Search by phone, name, email, IP','https://infinity-search.fun','web','freemium'],
-      ['GetContact','📱','Определение имени по номеру телефона','Name lookup by phone number','https://www.getcontact.com','web','freemium'],
-      ['NumBuster','🔍','Проверка номера — имя, отзывы, спам','Phone number check — name, reviews','https://numbuster.com','web','freemium'],
-      ['Sync.me','📞','Определитель номера и поиск по имени','Caller ID and name search','https://sync.me','web','freemium'],
-      ['Truecaller','📲','Определитель номера и блокировка спама','Caller ID and spam blocking','https://www.truecaller.com','web','free']
-    ]
-  },
-  search: {
-    ru: 'Поисковые системы', en: 'Search Engines',
-    tools: [
-      ['Google','🔎','Основной поисковик, максимально эффективен с дорками','Main search engine, powerful with dorks','https://google.com','web','free'],
-      ['Яндекс','🔎','Лучший поиск по русскоязычному сегменту','Best for Russian-language web','https://yandex.ru','web','free'],
-      ['DuckDuckGo','🦆','Анонимный поиск без трекинга','Anonymous search without tracking','https://duckduckgo.com','web','free'],
-      ['Google Dorks DB','📚','База Google Dorks в Exploit-DB','Google Dorks database','https://www.exploit-db.com/google-hacking-database','web','free'],
-      ['Startpage','🔍','Приватный поиск на основе Google','Private search based on Google','https://www.startpage.com','web','free'],
-      ['Bing','🔎','Поисковик Microsoft','Microsoft search engine','https://bing.com','web','free'],
-      ['Million Short','🗂️','Исключает топовые сайты из выдачи','Excludes top sites from results','https://millionshort.com','web','free'],
-      ['Searx','🔐','Метапоисковик с открытым кодом','Open-source metasearch','https://searx.be','web','free'],
-      ['Ahmia','🕶️','Поисковик по onion-сайтам в Tor','Search engine for onion sites','https://ahmia.fi','web','free']
-    ]
-  },
-  people: {
-    ru: 'Поиск людей', en: 'People Search',
-    tools: [
-      ['Have I Been Pwned','🔓','Проверка email на утечки данных','Check email against data breaches','https://haveibeenpwned.com','web','free'],
-      ['WebMii','👤','Поиск людей и упоминаний в сети','Search people and mentions','https://webmii.com','web','free'],
-      ['Pipl','📊','Глубокий поиск информации о человеке','Deep search on a person','https://pipl.com','web','paid'],
-      ['Sherlock','🎯','Поиск username по 400+ соцсетям (CLI)','Find username across 400+ sites (CLI)','https://github.com/sherlock-project/sherlock','cli','free'],
-      ['WhatsMyName','🔗','Проверка username по сотням сайтов','Check username on hundreds of sites','https://whatsmyname.app','web','free'],
-      ['Maigret','🎭','Поиск аккаунтов по нику в 2000+ сайтах','Find accounts by nick on 2000+ sites','https://github.com/soxoj/maigret','cli','free'],
-      ['Blackbird','👁️','Быстрый поиск аккаунтов по email/нику','Fast account search by email/nick','https://github.com/p1ngul1n0/blackbird','cli','free'],
-      ['Namechk','🔍','Проверка доступности ника','Check nickname availability','https://namechk.com','web','free'],
-      ['Hunter.io','📇','Поиск корпоративных email по домену','Find corporate emails by domain','https://hunter.io','web','freemium'],
-      ['Epieos','📩','Проверка email и привязанных аккаунтов','Email check and linked accounts','https://epieos.com','web','freemium'],
-      ['Holehe','📬','Проверка, где email зарегистрирован (CLI)','Check where email is registered (CLI)','https://github.com/megadose/holehe','cli','free'],
-      ['Gravatar','🌐','Поиск профиля по email','Find profile by email','https://gravatar.com','web','free'],
-      ['EmailRep','📧','Репутация и данные об email','Email reputation data','https://emailrep.io','web','free'],
-      ['Spokeo','👤','Поиск людей по email, телефону, имени (US)','People search US','https://www.spokeo.com','web','free'],
-      ['TruePeopleSearch','🔎','Поиск людей в США','US people search','https://www.truepeoplesearch.com','web','free'],
-      ['FastPeopleSearch','🔍','Быстрый поиск людей (US)','Fast US people search','https://www.fastpeoplesearch.com','web','free'],
-      ["That'sThem",'🧑','Поиск по имени, телефону, email и IP','Search by name, phone, email, IP','https://thatsthem.com','web','free']
-    ]
-  },
-  social: {
-    ru: 'Социальные сети', en: 'Social Media',
-    tools: [
-      ['Twitter Advanced Search','🐦','Продвинутый поиск по твитам','Advanced tweet search','https://twitter.com/search-advanced','web','free'],
-      ['Nitter','🐦','Приватный фронтенд Twitter без трекинга','Private Twitter frontend','https://nitter.net','web','free'],
-      ['Instaloader','📸','Скачивание контента Instagram (CLI)','Download Instagram content (CLI)','https://instaloader.github.io','cli','free'],
-      ['StoriesIG','👀','Анонимный просмотр Instagram Stories','View Instagram Stories anonymously','https://storiesig.info','web','free'],
-      ['Imginn','📱','Просмотр Instagram-профилей анонимно','View Instagram profiles anonymously','https://imginn.com','web','free'],
-      ['Social Searcher','🔎','Поиск по всем соцсетям одновременно','Search all social networks','https://www.social-searcher.com','web','freemium'],
-      ['TGStat','💬','Поиск публичных Telegram-каналов','Search public Telegram channels','https://tgstat.ru','web','free'],
-      ['Telemetr','📊','Аналитика Telegram-каналов','Telegram channel analytics','https://telemetr.io','web','free'],
-      ['YouTube Metadata','🎬','Метаданные YouTube-видео','YouTube video metadata','https://mattw.io/youtube-metadata/','web','free'],
-      ['Who Posted What','📘','Поиск постов Facebook по дате','Facebook posts search by date','https://www.whopostedwhat.com','web','free'],
-      ['Reddit Search','👽','Продвинутый поиск по Reddit','Advanced Reddit search','https://www.reddit.com/search/','web','free'],
-      ['Snaptik','🎵','Скачивание TikTok без водяного знака','Download TikTok without watermark','https://snaptik.app','web','free'],
-      ['LinkedIn','💼','Поиск сотрудников по компаниям','Employee search by company','https://www.linkedin.com','web','free'],
-      ['Pinterest Search','📌','Поиск пинов и профилей','Search pins and profiles','https://pinterest.com','web','free'],
-      ['Discord Lookup','🎮','Поиск Discord-профиля по ID','Find Discord profile by ID','https://discordlookup.com','web','free'],
-      ['Twitch Tracker','🎥','Аналитика стримов и каналов','Twitch stream analytics','https://twitchtracker.com','web','free']
-    ]
-  },
-  messenger: {
-    ru: 'Мессенджеры и чаты', en: 'Messengers & Chats',
-    tools: [
-      ['Lyzem','🔍','Поисковик по Telegram-контенту','Telegram content search','https://lyzem.com','web','free'],
-      ['Telegago','🌐','Google-поиск по Telegram-каналам','Google search on Telegram channels','https://cse.google.com/cse?cx=006368593537057042503:efxu7xprihg','web','free'],
-      ['WhatsApp Check','💬','Проверка наличия WhatsApp по номеру','Check WhatsApp by number','https://wa.me','web','free'],
-      ['Snapchat Map','📷','Публичная карта Snapchat Stories','Public Snapchat Stories map','https://map.snapchat.com','web','free'],
-      ['Discord.id','🤖','Поиск Discord-профиля по ID','Find Discord profile by ID','https://discord.id','web','free']
-    ]
-  },
-  network: {
-    ru: 'Сети и домены', en: 'Networks & Domains',
-    tools: [
-      ['Shodan','🌐','Поисковик интернет-устройств и портов','Search engine for IoT devices','https://www.shodan.io','web','freemium'],
-      ['Censys','🔍','Сканирование интернета и анализ хостов','Internet scanning and host analysis','https://censys.io','web','freemium'],
-      ['VirusTotal','🛡️','Анализ файлов, URL, доменов и IP','Analyze files, URLs, domains, IPs','https://www.virustotal.com','web','free'],
-      ['crt.sh','🔐','Поиск поддоменов через SSL-сертификаты','Find subdomains via SSL certs','https://crt.sh','web','free'],
-      ['DNSDumpster','🗺️','Карта DNS-инфраструктуры домена','DNS infrastructure map','https://dnsdumpster.com','web','free'],
-      ['IPinfo','📡','Геолокация и информация об IP','IP geolocation and info','https://ipinfo.io','web','free'],
-      ['WiGLE','📶','База Wi-Fi сетей по всему миру','Wi-Fi networks database','https://wigle.net','web','free'],
-      ['URLScan.io','🔬','Анализ и сканирование URL','URL analysis and scanning','https://urlscan.io','web','free'],
-      ['SecurityTrails','🌐','Исторические данные DNS и WHOIS','DNS and WHOIS history','https://securitytrails.com','web','free'],
-      ['BuiltWith','🕸️','Определение технологий сайта','Detect website technologies','https://builtwith.com','web','free'],
-      ['Netcraft','🔎','Информация о сайте и владельце','Site and owner info','https://sitereport.netcraft.com','web','free'],
-      ['MXToolbox','📧','Проверка MX, SMTP и DNS записей','MX, SMTP, DNS checks','https://mxtoolbox.com','web','free'],
-      ['FOFA','🔎','Китайский аналог Shodan','Chinese Shodan analog','https://fofa.info','web','freemium'],
-      ['ZoomEye','🌐','Поисковик сетевых устройств','Network device search','https://www.zoomeye.org','web','freemium'],
-      ['GreyNoise','📡','Анализ интернет-шума и сканеров','Internet noise analysis','https://viz.greynoise.io','web','free'],
-      ['SSL Labs','🔐','Проверка SSL-конфигурации сайта','SSL config test','https://www.ssllabs.com/ssltest/','web','free'],
-      ['Wappalyzer','📊','Определение технологий сайта','Detect website technologies','https://www.wappalyzer.com','web','free'],
-      ['Robtex','🌍','Анализ IP и доменных имён','IP and domain analysis','https://www.robtex.com','web','free'],
-      ['IPVoid','📋','Проверка репутации IP','IP reputation check','https://www.ipvoid.com','web','free']
-    ]
-  },
-  images: {
-    ru: 'Изображения и геолокация', en: 'Images & Geolocation',
-    tools: [
-      ['Google Images','🖼️','Обратный поиск по картинке','Reverse image search','https://images.google.com','web','free'],
-      ['Yandex Images','🖼️','Лучший обратный поиск по лицу','Best face reverse search','https://yandex.ru/images','web','free'],
-      ['TinEye','🔍','Поиск источника изображения','Find image source','https://tineye.com','web','free'],
-      ['PimEyes','🍑','Поиск лиц по фото через AI','AI face search','https://pimeyes.com','web','freemium'],
-      ['ExifData','📷','Просмотр EXIF-метаданных фото','View photo EXIF data','https://exifdata.com','web','free'],
-      ['FotoForensics','🔬','Анализ подлинности фотографий','Photo authenticity analysis','https://fotoforensics.com','web','free'],
-      ['SunCalc','☀️','Расчёт положения солнца — геолокация по теням','Sun position — geo via shadows','https://www.suncalc.org','web','free'],
-      ['PeakVisor','🏔️','Идентификация горных вершин на фото','Identify mountain peaks','https://peakvisor.com','web','free'],
-      ['Mapillary','🗺️','Краудсорсинговые фото улиц','Crowdsourced street photos','https://www.mapillary.com','web','free'],
-      ['GeoSpy','🌐','AI-определение локации по фото','AI photo geolocation','https://geospy.ai','web','free'],
-      ['Google Earth','🛰️','3D-снимки планеты','3D planet imagery','https://earth.google.com','web','free'],
-      ['NASA Worldview','🛰️','Спутниковые снимки NASA','NASA satellite imagery','https://worldview.earthdata.nasa.gov','web','free'],
-      ['OpenStreetMap','🌍','Открытая карта мира','Open world map','https://www.openstreetmap.org','web','free'],
-      ['Overpass Turbo','🌍','Запросы к OpenStreetMap','OSM queries','https://overpass-turbo.eu','web','free'],
-      ['KartaView','📸','Открытые панорамы улиц','Open street panoramas','https://kartaview.org','web','free'],
-      ['ShadeMap','🌅','Расчёт теней в любой точке','Shadow calculation','https://shademap.app','web','free']
-    ]
-  },
-  leaks: {
-    ru: 'Утечки и архивы', en: 'Leaks & Archives',
-    tools: [
-      ['Wayback Machine','📚','Архив старых версий сайтов','Web archive','https://web.archive.org','web','free'],
-      ['archive.today','🗄️','Быстрое сохранение страниц','Fast page archiving','https://archive.ph','web','free'],
-      ['DeHashed','🔓','Поиск по базам утечек','Search leaked databases','https://dehashed.com','web','paid'],
-      ['Intelligence X','🕵️','Поиск в даркнете и утечках','Search dark web and leaks','https://intelx.io','web','freemium'],
-      ['LeakCheck','🔐','Проверка утечек по email','Email leak check','https://leakcheck.io','web','freemium'],
-      ['Leak-Lookup','🔑','Поиск по 15+ млрд записей','Search 15B+ leaked records','https://leak-lookup.com','web','paid'],
-      ['Snusbase','🗃️','Поиск по крупнейшим базам утечек','Search big leak databases','https://snusbase.com','web','paid'],
-      ['CachedView','📄','Кэшированные версии страниц','Cached page versions','https://cachedview.com','web','free'],
-      ['Google News Archive','📰','Архив газет и новостей','Newspaper archive','https://news.google.com/newspapers','web','free'],
-      ['SearchCode','💻','Поиск по исходному коду','Source code search','https://searchcode.com','web','free']
-    ]
-  },
-  crypto: {
-    ru: 'Криптовалюты', en: 'Cryptocurrencies',
-    tools: [
-      ['Blockchain.com','₿','Просмотр транзакций Bitcoin и Ethereum','View BTC & ETH transactions','https://www.blockchain.com/explorer','web','free'],
-      ['Etherscan','🔗','Explorer блокчейна Ethereum','Ethereum blockchain explorer','https://etherscan.io','web','free'],
-      ['Wallet Explorer','💰','Баланс и история крипто-кошельков','Crypto wallet history','https://www.walletexplorer.com','web','free'],
-      ['CoinMarketCap','📊','Котировки криптовалют','Crypto market data','https://coinmarketcap.com','web','free'],
-      ['OpenCorporates','💵','База данных компаний','Companies database','https://opencorporates.com','web','free'],
-      ['Chainalysis','🔍','Анализ криптотранзакций','Crypto transaction analysis','https://www.chainalysis.com','web','free'],
-      ['BitRef','🪙','Проверка Bitcoin-адресов','Bitcoin address check','https://bitref.com','web','free'],
-      ['OXT','📈','Исследование блокчейна Bitcoin','Bitcoin blockchain research','https://oxt.me','web','free']
-    ]
-  },
-  transport: {
-    ru: 'Транспорт и авиация', en: 'Transport & Aviation',
-    tools: [
-      ['FlightRadar24','✈️','Отслеживание самолётов в реальном времени','Real-time flight tracking','https://www.flightradar24.com','web','free'],
-      ['FlightAware','✈️','Отслеживание рейсов и расписания','Flight tracking and schedules','https://www.flightaware.com','web','free'],
-      ['ADS-B Exchange','✈️','Нетфильтрованный трекинг самолётов','Unfiltered flight tracking','https://globe.adsbexchange.com','web','free'],
-      ['MarineTraffic','🚢','Отслеживание кораблей','Ship tracking','https://www.marinetraffic.com','web','free'],
-      ['VesselFinder','🚢','Информация о судах','Ship info','https://www.vesselfinder.com','web','free'],
-      ['OpenRailwayMap','🚂','Карта железных дорог мира','World railway map','https://www.openrailwaymap.org','web','free'],
-      ['OpenCarInfo','🚗','Проверка авто по VIN','VIN check','https://opencarinfo.com','web','free']
-    ]
-  },
-  darknet: {
-    ru: 'Даркнет и Tor', en: 'Darknet & Tor',
-    tools: [
-      ['Tor Project','🧅','Официальный браузер для onion','Official onion browser','https://www.torproject.org','web','free'],
-      ['Ahmia','🔍','Поисковик по onion-сайтам','Onion search engine','https://ahmia.fi','web','free'],
-      ['Tor2Web','🧅','Доступ к .onion через обычный браузер','Access .onion via regular browser','https://www.tor2web.org','web','free'],
-      ['Onion.Live','📋','Каталог onion-сайтов','Onion sites catalog','https://onion.live','web','free'],
-      ['Dark.fail','🕶️','Проверенный список onion-зеркал','Verified onion mirrors','https://dark.fail','web','free']
-    ]
-  },
-  ai: {
-    ru: 'AI для OSINT', en: 'AI for OSINT',
-    tools: [
-      ['ChatGPT','🤖','Ассистент для анализа данных','Data analysis assistant','https://chat.openai.com','web','freemium'],
-      ['Claude','🧠','AI-ассистент от Anthropic','Anthropic AI assistant','https://claude.ai','web','freemium'],
-      ['Gemini','🌟','AI от Google','Google AI','https://gemini.google.com','web','freemium'],
-      ['Perplexity','🔍','AI-поисковик с источниками','AI search with sources','https://www.perplexity.ai','web','free'],
-      ['FaceCheck.ID','🎯','AI-поиск человека по фото','AI face search','https://facecheck.id','web','free']
-    ]
-  },
-  pentest: {
-    ru: 'Пентест и разведка', en: 'Pentest & Recon',
-    tools: [
-      ['theHarvester','🦈','Сбор email и поддоменов','Email and subdomain collection','https://github.com/laramies/theHarvester','cli','free'],
-      ['Maltego','🔎','Визуализация связей','Link visualization','https://www.maltego.com','web','paid'],
-      ['SpiderFoot','🌐','Автоматизированная разведка','Automated recon','https://www.spiderfoot.net','cli','free'],
-      ['Recon-ng','🔍','Фреймворк для веб-разведки','Web recon framework','https://github.com/lanmaster53/recon-ng','cli','free'],
-      ['Nmap','🛰️','Сканирование портов','Port scanning','https://nmap.org','cli','free'],
-      ['Wireshark','🔐','Анализатор трафика','Traffic analyzer','https://www.wireshark.org','cli','free'],
-      ['Metasploit','🔓','Тестирование уязвимостей','Vulnerability testing','https://www.metasploit.com','cli','free'],
-      ['Amass','📡','Сканирование поддоменов','Subdomain scanning','https://github.com/owasp-amass/amass','cli','free'],
-      ['Nikto','🎯','Сканер веб-серверов','Web server scanner','https://github.com/sullo/nikto','cli','free'],
-      ['Gobuster','🔦','Брутфорс директорий','Directory bruteforce','https://github.com/OJ/gobuster','cli','free'],
-      ['SQLMap','💥','SQL-инъекции','SQL injection','https://sqlmap.org','cli','free'],
-      ['Aircrack-ng','🌊','Аудит Wi-Fi сетей','Wi-Fi audit','https://www.aircrack-ng.org','cli','free']
-    ]
-  }
+  deanon:{ru:'Деанон',en:'Deanon',tools:[
+    ['Sosok Monster','🔎','Поиск информации о людях: ФИО, телефон, email, соцсети','Search for people info: name, phone, email, socials','https://sosok.monster','web','freemium'],
+    ['Infinity Search','🔎','Поиск по номеру, ФИО, email, IP','Search by phone, name, email, IP','https://infinity-search.fun','web','freemium'],
+    ['GetContact','📱','Определение имени по номеру телефона','Name lookup by phone number','https://www.getcontact.com','web','freemium'],
+    ['NumBuster','🔍','Проверка номера — имя, отзывы, спам','Phone number check — name, reviews','https://numbuster.com','web','freemium'],
+    ['Sync.me','📞','Определитель номера и поиск по имени','Caller ID and name search','https://sync.me','web','freemium'],
+    ['Truecaller','📲','Определитель номера и блокировка спама','Caller ID and spam blocking','https://www.truecaller.com','web','free']
+  ]},
+  search:{ru:'Поисковые системы',en:'Search Engines',tools:[
+    ['Google','🔎','Основной поисковик, максимально эффективен с дорками','Main search engine, powerful with dorks','https://google.com','web','free'],
+    ['Яндекс','🔎','Лучший поиск по русскоязычному сегменту','Best for Russian-language web','https://yandex.ru','web','free'],
+    ['DuckDuckGo','🦆','Анонимный поиск без трекинга','Anonymous search without tracking','https://duckduckgo.com','web','free'],
+    ['Google Dorks DB','📚','База Google Dorks в Exploit-DB','Google Dorks database','https://www.exploit-db.com/google-hacking-database','web','free'],
+    ['Startpage','🔍','Приватный поиск на основе Google','Private search based on Google','https://www.startpage.com','web','free'],
+    ['Bing','🔎','Поисковик Microsoft','Microsoft search engine','https://bing.com','web','free'],
+    ['Million Short','🗂️','Исключает топовые сайты из выдачи','Excludes top sites from results','https://millionshort.com','web','free'],
+    ['Searx','🔐','Метапоисковик с открытым кодом','Open-source metasearch','https://searx.be','web','free'],
+    ['Ahmia','🕶️','Поисковик по onion-сайтам в Tor','Search engine for onion sites','https://ahmia.fi','web','free']
+  ]},
+  people:{ru:'Поиск людей',en:'People Search',tools:[
+    ['Have I Been Pwned','🔓','Проверка email на утечки данных','Check email against data breaches','https://haveibeenpwned.com','web','free'],
+    ['WebMii','👤','Поиск людей и упоминаний в сети','Search people and mentions','https://webmii.com','web','free'],
+    ['Pipl','📊','Глубокий поиск информации о человеке','Deep search on a person','https://pipl.com','web','paid'],
+    ['Sherlock','🎯','Поиск username по 400+ соцсетям (CLI)','Find username across 400+ sites (CLI)','https://github.com/sherlock-project/sherlock','cli','free'],
+    ['WhatsMyName','🔗','Проверка username по сотням сайтов','Check username on hundreds of sites','https://whatsmyname.app','web','free'],
+    ['Maigret','🎭','Поиск аккаунтов по нику в 2000+ сайтах','Find accounts by nick on 2000+ sites','https://github.com/soxoj/maigret','cli','free'],
+    ['Blackbird','👁️','Быстрый поиск аккаунтов по email/нику','Fast account search by email/nick','https://github.com/p1ngul1n0/blackbird','cli','free'],
+    ['Namechk','🔍','Проверка доступности ника','Check nickname availability','https://namechk.com','web','free'],
+    ['Hunter.io','📇','Поиск корпоративных email по домену','Find corporate emails by domain','https://hunter.io','web','freemium'],
+    ['Epieos','📩','Проверка email и привязанных аккаунтов','Email check and linked accounts','https://epieos.com','web','freemium'],
+    ['Holehe','📬','Проверка, где email зарегистрирован (CLI)','Check where email is registered (CLI)','https://github.com/megadose/holehe','cli','free'],
+    ['Gravatar','🌐','Поиск профиля по email','Find profile by email','https://gravatar.com','web','free'],
+    ['EmailRep','📧','Репутация и данные об email','Email reputation data','https://emailrep.io','web','free'],
+    ['Spokeo','👤','Поиск людей по email, телефону, имени (US)','People search US','https://www.spokeo.com','web','free'],
+    ['TruePeopleSearch','🔎','Поиск людей в США','US people search','https://www.truepeoplesearch.com','web','free'],
+    ['FastPeopleSearch','🔍','Быстрый поиск людей (US)','Fast US people search','https://www.fastpeoplesearch.com','web','free'],
+    ["That'sThem",'🧑','Поиск по имени, телефону, email и IP','Search by name, phone, email, IP','https://thatsthem.com','web','free']
+  ]},
+  social:{ru:'Социальные сети',en:'Social Media',tools:[
+    ['Twitter Advanced Search','🐦','Продвинутый поиск по твитам','Advanced tweet search','https://twitter.com/search-advanced','web','free'],
+    ['Nitter','🐦','Приватный фронтенд Twitter без трекинга','Private Twitter frontend','https://nitter.net','web','free'],
+    ['Instaloader','📸','Скачивание контента Instagram (CLI)','Download Instagram content (CLI)','https://instaloader.github.io','cli','free'],
+    ['StoriesIG','👀','Анонимный просмотр Instagram Stories','View Instagram Stories anonymously','https://storiesig.info','web','free'],
+    ['Imginn','📱','Просмотр Instagram-профилей анонимно','View Instagram profiles anonymously','https://imginn.com','web','free'],
+    ['Social Searcher','🔎','Поиск по всем соцсетям одновременно','Search all social networks','https://www.social-searcher.com','web','freemium'],
+    ['TGStat','💬','Поиск публичных Telegram-каналов','Search public Telegram channels','https://tgstat.ru','web','free'],
+    ['Telemetr','📊','Аналитика Telegram-каналов','Telegram channel analytics','https://telemetr.io','web','free'],
+    ['YouTube Metadata','🎬','Метаданные YouTube-видео','YouTube video metadata','https://mattw.io/youtube-metadata/','web','free'],
+    ['Who Posted What','📘','Поиск постов Facebook по дате','Facebook posts search by date','https://www.whopostedwhat.com','web','free'],
+    ['Reddit Search','👽','Продвинутый поиск по Reddit','Advanced Reddit search','https://www.reddit.com/search/','web','free'],
+    ['Snaptik','🎵','Скачивание TikTok без водяного знака','Download TikTok without watermark','https://snaptik.app','web','free'],
+    ['LinkedIn','💼','Поиск сотрудников по компаниям','Employee search by company','https://www.linkedin.com','web','free'],
+    ['Pinterest Search','📌','Поиск пинов и профилей','Search pins and profiles','https://pinterest.com','web','free'],
+    ['Discord Lookup','🎮','Поиск Discord-профиля по ID','Find Discord profile by ID','https://discordlookup.com','web','free'],
+    ['Twitch Tracker','🎥','Аналитика стримов и каналов','Twitch stream analytics','https://twitchtracker.com','web','free']
+  ]},
+  messenger:{ru:'Мессенджеры и чаты',en:'Messengers & Chats',tools:[
+    ['Lyzem','🔍','Поисковик по Telegram-контенту','Telegram content search','https://lyzem.com','web','free'],
+    ['Telegago','🌐','Google-поиск по Telegram-каналам','Google search on Telegram channels','https://cse.google.com/cse?cx=006368593537057042503:efxu7xprihg','web','free'],
+    ['WhatsApp Check','💬','Проверка наличия WhatsApp по номеру','Check WhatsApp by number','https://wa.me','web','free'],
+    ['Snapchat Map','📷','Публичная карта Snapchat Stories','Public Snapchat Stories map','https://map.snapchat.com','web','free'],
+    ['Discord.id','🤖','Поиск Discord-профиля по ID','Find Discord profile by ID','https://discord.id','web','free']
+  ]},
+  network:{ru:'Сети и домены',en:'Networks & Domains',tools:[
+    ['Shodan','🌐','Поисковик интернет-устройств и портов','Search engine for IoT devices','https://www.shodan.io','web','freemium'],
+    ['Censys','🔍','Сканирование интернета и анализ хостов','Internet scanning and host analysis','https://censys.io','web','freemium'],
+    ['VirusTotal','🛡️','Анализ файлов, URL, доменов и IP','Analyze files, URLs, domains, IPs','https://www.virustotal.com','web','free'],
+    ['crt.sh','🔐','Поиск поддоменов через SSL-сертификаты','Find subdomains via SSL certs','https://crt.sh','web','free'],
+    ['DNSDumpster','🗺️','Карта DNS-инфраструктуры домена','DNS infrastructure map','https://dnsdumpster.com','web','free'],
+    ['IPinfo','📡','Геолокация и информация об IP','IP geolocation and info','https://ipinfo.io','web','free'],
+    ['WiGLE','📶','База Wi-Fi сетей по всему миру','Wi-Fi networks database','https://wigle.net','web','free'],
+    ['URLScan.io','🔬','Анализ и сканирование URL','URL analysis and scanning','https://urlscan.io','web','free'],
+    ['SecurityTrails','🌐','Исторические данные DNS и WHOIS','DNS and WHOIS history','https://securitytrails.com','web','free'],
+    ['BuiltWith','🕸️','Определение технологий сайта','Detect website technologies','https://builtwith.com','web','free'],
+    ['Netcraft','🔎','Информация о сайте и владельце','Site and owner info','https://sitereport.netcraft.com','web','free'],
+    ['MXToolbox','📧','Проверка MX, SMTP и DNS записей','MX, SMTP, DNS checks','https://mxtoolbox.com','web','free'],
+    ['FOFA','🔎','Китайский аналог Shodan','Chinese Shodan analog','https://fofa.info','web','freemium'],
+    ['ZoomEye','🌐','Поисковик сетевых устройств','Network device search','https://www.zoomeye.org','web','freemium'],
+    ['GreyNoise','📡','Анализ интернет-шума и сканеров','Internet noise analysis','https://viz.greynoise.io','web','free'],
+    ['SSL Labs','🔐','Проверка SSL-конфигурации сайта','SSL config test','https://www.ssllabs.com/ssltest/','web','free'],
+    ['Wappalyzer','📊','Определение технологий сайта','Detect website technologies','https://www.wappalyzer.com','web','free'],
+    ['Robtex','🌍','Анализ IP и доменных имён','IP and domain analysis','https://www.robtex.com','web','free'],
+    ['IPVoid','📋','Проверка репутации IP','IP reputation check','https://www.ipvoid.com','web','free']
+  ]},
+  images:{ru:'Изображения и геолокация',en:'Images & Geolocation',tools:[
+    ['Google Images','🖼️','Обратный поиск по картинке','Reverse image search','https://images.google.com','web','free'],
+    ['Yandex Images','🖼️','Лучший обратный поиск по лицу','Best face reverse search','https://yandex.ru/images','web','free'],
+    ['TinEye','🔍','Поиск источника изображения','Find image source','https://tineye.com','web','free'],
+    ['PimEyes','🍑','Поиск лиц по фото через AI','AI face search','https://pimeyes.com','web','freemium'],
+    ['ExifData','📷','Просмотр EXIF-метаданных фото','View photo EXIF data','https://exifdata.com','web','free'],
+    ['FotoForensics','🔬','Анализ подлинности фотографий','Photo authenticity analysis','https://fotoforensics.com','web','free'],
+    ['SunCalc','☀️','Расчёт положения солнца — геолокация по теням','Sun position — geo via shadows','https://www.suncalc.org','web','free'],
+    ['PeakVisor','🏔️','Идентификация горных вершин на фото','Identify mountain peaks','https://peakvisor.com','web','free'],
+    ['Mapillary','🗺️','Краудсорсинговые фото улиц','Crowdsourced street photos','https://www.mapillary.com','web','free'],
+    ['GeoSpy','🌐','AI-определение локации по фото','AI photo geolocation','https://geospy.ai','web','free'],
+    ['Google Earth','🛰️','3D-снимки планеты','3D planet imagery','https://earth.google.com','web','free'],
+    ['NASA Worldview','🛰️','Спутниковые снимки NASA','NASA satellite imagery','https://worldview.earthdata.nasa.gov','web','free'],
+    ['OpenStreetMap','🌍','Открытая карта мира','Open world map','https://www.openstreetmap.org','web','free'],
+    ['Overpass Turbo','🌍','Запросы к OpenStreetMap','OSM queries','https://overpass-turbo.eu','web','free'],
+    ['KartaView','📸','Открытые панорамы улиц','Open street panoramas','https://kartaview.org','web','free'],
+    ['ShadeMap','🌅','Расчёт теней в любой точке','Shadow calculation','https://shademap.app','web','free']
+  ]},
+  leaks:{ru:'Утечки и архивы',en:'Leaks & Archives',tools:[
+    ['Wayback Machine','📚','Архив старых версий сайтов','Web archive','https://web.archive.org','web','free'],
+    ['archive.today','🗄️','Быстрое сохранение страниц','Fast page archiving','https://archive.ph','web','free'],
+    ['DeHashed','🔓','Поиск по базам утечек','Search leaked databases','https://dehashed.com','web','paid'],
+    ['Intelligence X','🕵️','Поиск в даркнете и утечках','Search dark web and leaks','https://intelx.io','web','freemium'],
+    ['LeakCheck','🔐','Проверка утечек по email','Email leak check','https://leakcheck.io','web','freemium'],
+    ['Leak-Lookup','🔑','Поиск по 15+ млрд записей','Search 15B+ leaked records','https://leak-lookup.com','web','paid'],
+    ['Snusbase','🗃️','Поиск по крупнейшим базам утечек','Search big leak databases','https://snusbase.com','web','paid'],
+    ['CachedView','📄','Кэшированные версии страниц','Cached page versions','https://cachedview.com','web','free'],
+    ['Google News Archive','📰','Архив газет и новостей','Newspaper archive','https://news.google.com/newspapers','web','free'],
+    ['SearchCode','💻','Поиск по исходному коду','Source code search','https://searchcode.com','web','free']
+  ]},
+  crypto:{ru:'Криптовалюты',en:'Cryptocurrencies',tools:[
+    ['Blockchain.com','₿','Просмотр транзакций Bitcoin и Ethereum','View BTC & ETH transactions','https://www.blockchain.com/explorer','web','free'],
+    ['Etherscan','🔗','Explorer блокчейна Ethereum','Ethereum blockchain explorer','https://etherscan.io','web','free'],
+    ['Wallet Explorer','💰','Баланс и история крипто-кошельков','Crypto wallet history','https://www.walletexplorer.com','web','free'],
+    ['CoinMarketCap','📊','Котировки криптовалют','Crypto market data','https://coinmarketcap.com','web','free'],
+    ['OpenCorporates','💵','База данных компаний','Companies database','https://opencorporates.com','web','free'],
+    ['Chainalysis','🔍','Анализ криптотранзакций','Crypto transaction analysis','https://www.chainalysis.com','web','free'],
+    ['BitRef','🪙','Проверка Bitcoin-адресов','Bitcoin address check','https://bitref.com','web','free'],
+    ['OXT','📈','Исследование блокчейна Bitcoin','Bitcoin blockchain research','https://oxt.me','web','free']
+  ]},
+  transport:{ru:'Транспорт и авиация',en:'Transport & Aviation',tools:[
+    ['FlightRadar24','✈️','Отслеживание самолётов в реальном времени','Real-time flight tracking','https://www.flightradar24.com','web','free'],
+    ['FlightAware','✈️','Отслеживание рейсов и расписания','Flight tracking and schedules','https://www.flightaware.com','web','free'],
+    ['ADS-B Exchange','✈️','Нетфильтрованный трекинг самолётов','Unfiltered flight tracking','https://globe.adsbexchange.com','web','free'],
+    ['MarineTraffic','🚢','Отслеживание кораблей','Ship tracking','https://www.marinetraffic.com','web','free'],
+    ['VesselFinder','🚢','Информация о судах','Ship info','https://www.vesselfinder.com','web','free'],
+    ['OpenRailwayMap','🚂','Карта железных дорог мира','World railway map','https://www.openrailwaymap.org','web','free'],
+    ['OpenCarInfo','🚗','Проверка авто по VIN','VIN check','https://opencarinfo.com','web','free']
+  ]},
+  darknet:{ru:'Даркнет и Tor',en:'Darknet & Tor',tools:[
+    ['Tor Project','🧅','Официальный браузер для onion','Official onion browser','https://www.torproject.org','web','free'],
+    ['Ahmia','🔍','Поисковик по onion-сайтам','Onion search engine','https://ahmia.fi','web','free'],
+    ['Tor2Web','🧅','Доступ к .onion через обычный браузер','Access .onion via regular browser','https://www.tor2web.org','web','free'],
+    ['Onion.Live','📋','Каталог onion-сайтов','Onion sites catalog','https://onion.live','web','free'],
+    ['Dark.fail','🕶️','Проверенный список onion-зеркал','Verified onion mirrors','https://dark.fail','web','free']
+  ]},
+  ai:{ru:'AI для OSINT',en:'AI for OSINT',tools:[
+    ['ChatGPT','🤖','Ассистент для анализа данных','Data analysis assistant','https://chat.openai.com','web','freemium'],
+    ['Claude','🧠','AI-ассистент от Anthropic','Anthropic AI assistant','https://claude.ai','web','freemium'],
+    ['Gemini','🌟','AI от Google','Google AI','https://gemini.google.com','web','freemium'],
+    ['Perplexity','🔍','AI-поисковик с источниками','AI search with sources','https://www.perplexity.ai','web','free'],
+    ['FaceCheck.ID','🎯','AI-поиск человека по фото','AI face search','https://facecheck.id','web','free']
+  ]},
+  pentest:{ru:'Пентест и разведка',en:'Pentest & Recon',tools:[
+    ['theHarvester','🦈','Сбор email и поддоменов','Email and subdomain collection','https://github.com/laramies/theHarvester','cli','free'],
+    ['Maltego','🔎','Визуализация связей','Link visualization','https://www.maltego.com','web','paid'],
+    ['SpiderFoot','🌐','Автоматизированная разведка','Automated recon','https://www.spiderfoot.net','cli','free'],
+    ['Recon-ng','🔍','Фреймворк для веб-разведки','Web recon framework','https://github.com/lanmaster53/recon-ng','cli','free'],
+    ['Nmap','🛰️','Сканирование портов','Port scanning','https://nmap.org','cli','free'],
+    ['Wireshark','🔐','Анализатор трафика','Traffic analyzer','https://www.wireshark.org','cli','free'],
+    ['Metasploit','🔓','Тестирование уязвимостей','Vulnerability testing','https://www.metasploit.com','cli','free'],
+    ['Amass','📡','Сканирование поддоменов','Subdomain scanning','https://github.com/owasp-amass/amass','cli','free'],
+    ['Nikto','🎯','Сканер веб-серверов','Web server scanner','https://github.com/sullo/nikto','cli','free'],
+    ['Gobuster','🔦','Брутфорс директорий','Directory bruteforce','https://github.com/OJ/gobuster','cli','free'],
+    ['SQLMap','💥','SQL-инъекции','SQL injection','https://sqlmap.org','cli','free'],
+    ['Aircrack-ng','🌊','Аудит Wi-Fi сетей','Wi-Fi audit','https://www.aircrack-ng.org','cli','free']
+  ]}
 };
 
 // ============ ПЕРЕВОДЫ ============
 var I18N = {
-  ru: {
+  ru:{
     title:'Каталог инструментов OSINT', founder:'founder —', tg:'Telegram-канал',
+    faceBtn:'Поиск по фото',
     searchPh:'Поиск по инструментам...', fCat:'Категория', fSort:'Сортировка',
     fType:'Тип', fAcc:'Доступ', fav:'Избранные', empty:'😕 Ничего не найдено. Попробуй другой запрос.',
     tgSub:'Подписаться на Telegram-канал', legal:'Все инструменты предназначены для легального использования.',
     all:'Все', sortPop:'По популярности', sortName:'По названию (А-Я)', sortNameD:'По названию (Я-А)',
     typeAll:'Все типы', typeWeb:'Веб-сервис', typeCli:'CLI / утилита', typeApi:'API',
     accAny:'Любой', accFree:'Бесплатно', accFreemium:'Freemium', accPaid:'Платно',
-    expand:'свернуть', collapse:'раскрыть'
+    expand:'свернуть', collapse:'раскрыть',
+    mTitle:'Поиск по фото лица',
+    mDesc:'Загрузите фото лица — мы покажем сервисы, где можно проверить это фото в открытых источниках. Загрузка происходит только в вашем браузере, никуда не отправляется.',
+    dzTitle:'Перетащите фото сюда', dzHint:'или нажмите, чтобы выбрать файл (JPG, PNG, WEBP)',
+    changeBtn:'Выбрать другое фото', svcTitle:'Проверить это фото в:',
+    s1:'Поиск лиц по фото через AI — крупнейшая база', s2:'AI-поиск человека по фото лица в соцсетях',
+    s3:'Обратный поиск по лицу — лучший в рунете', s4:'Обратный поиск по фото от Google',
+    s5:'Обратный поиск изображения от Microsoft', s6:'Поиск источника и ранних версий изображения',
+    s7:'Анализ подлинности фото (ELA-метод)',
+    note:'Сервисы открываются в новых вкладках — фото туда нужно загрузить вручную. Мы не отправляем ваше фото на сторонние серверы. Все сервисы принадлежат третьим лицам, используйте на свой риск и только для легальных целей.'
   },
-  en: {
+  en:{
     title:'OSINT Tools Catalog', founder:'founder —', tg:'Telegram Channel',
+    faceBtn:'Face search',
     searchPh:'Search tools...', fCat:'Category', fSort:'Sort',
     fType:'Type', fAcc:'Access', fav:'Favorites', empty:'😕 Nothing found. Try another query.',
     tgSub:'Subscribe to Telegram channel', legal:'All tools are for legal use only.',
     all:'All', sortPop:'By popularity', sortName:'By name (A-Z)', sortNameD:'By name (Z-A)',
     typeAll:'All types', typeWeb:'Web service', typeCli:'CLI / utility', typeApi:'API',
     accAny:'Any', accFree:'Free', accFreemium:'Freemium', accPaid:'Paid',
-    expand:'collapse', collapse:'expand'
+    expand:'collapse', collapse:'expand',
+    mTitle:'Face photo search',
+    mDesc:'Upload a face photo — we will show services where you can check this photo in open sources. Upload happens only in your browser, nothing is sent anywhere.',
+    dzTitle:'Drag photo here', dzHint:'or click to select file (JPG, PNG, WEBP)',
+    changeBtn:'Choose another photo', svcTitle:'Check this photo in:',
+    s1:'AI face search — largest database', s2:'AI face search in social networks',
+    s3:'Best reverse face search for Russian web', s4:'Reverse photo search by Google',
+    s5:'Reverse image search by Microsoft', s6:'Find image source and early versions',
+    s7:'Photo authenticity analysis (ELA)',
+    note:'Services open in new tabs — upload photo there manually. We do not send your photo to third-party servers. All services belong to third parties, use at your own risk and only for legal purposes.'
   }
 };
 
 var state = { lang:'ru', category:'all', sort:'popular', type:'all', access:'any', query:'', favOnly:false, view:'list' };
 var favs = JSON.parse(localStorage.getItem('osint_favs') || '[]');
+function t(k){ return I18N[state.lang][k] || k; }
 
-function t(key){ return I18N[state.lang][key] || key; }
-
-// ============ СОЗДАНИЕ HTML ============
+// ============ КАТАЛОГ ============
 function buildCatalog(){
   var content = document.getElementById('content');
   content.innerHTML = '';
@@ -449,22 +557,19 @@ function buildCatalog(){
     section.className = 'cat';
     section.dataset.category = catKey;
     var catName = state.lang === 'ru' ? cat.ru : cat.en;
-
     var html = '<div class="ch"><h2>' + catName + ' <span class="cnt">0</span></h2><div class="ct">' + t('expand') + ' <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg></div></div><div class="cb">';
-
     cat.tools.forEach(function(tool, i){
       var name = tool[0], icon = tool[1];
       var desc = state.lang === 'ru' ? tool[2] : tool[3];
       var url = tool[4], type = tool[5], access = tool[6];
       var isFav = favs.indexOf(name) !== -1;
-      html += '<div class="card" data-type="' + type + '" data-access="' + access + '" data-name="' + name + '" data-fav="' + (isFav?'1':'0') + '" data-pop="' + (1000 - Object.keys(CATALOG).length*100 - i) + '">' +
+      html += '<div class="card" data-type="' + type + '" data-access="' + access + '" data-name="' + name + '" data-fav="' + (isFav?'1':'0') + '" data-pop="' + (1000 - i) + '">' +
         '<div class="ch-head"><div class="ct-title"><div class="ci">' + icon + '</div><div class="cn">' + name + '</div></div>' +
-        '<button class="cf-btn' + (isFav?' active':'') + '" title="Fav"><svg viewBox="0 0 24 24" fill="' + (isFav?'currentColor':'none') + '" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></button></div>' +
+        '<button class="cf-btn' + (isFav?' active':'') + '"><svg viewBox="0 0 24 24" fill="' + (isFav?'currentColor':'none') + '" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg></button></div>' +
         '<div class="cd">' + desc + '</div>' +
         '<div class="cf-foot"><div class="cp">' + catName + ' / <span>' + type + ' · ' + access + '</span></div>' +
         '<a class="cl" href="' + url + '" target="_blank"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg></a></div></div>';
     });
-
     html += '</div>';
     section.innerHTML = html;
     content.appendChild(section);
@@ -473,7 +578,6 @@ function buildCatalog(){
   applyFilters();
 }
 
-// ============ ПРИВЯЗКА СОБЫТИЙ ============
 function bindEvents(){
   document.querySelectorAll('.ch').forEach(function(h){
     h.onclick = function(){
@@ -483,7 +587,6 @@ function bindEvents(){
       txt.nodeValue = cat.classList.contains('collapsed') ? t('collapse') + ' ' : t('expand') + ' ';
     };
   });
-
   document.querySelectorAll('.card').forEach(function(card){
     card.onclick = function(e){
       if (e.target.closest('.cl') || e.target.closest('.cf-btn')) return;
@@ -504,10 +607,9 @@ function bindEvents(){
   });
 }
 
-// ============ ФИЛЬТРЫ ============
 function buildDrops(){
   var defs = {
-    category: [{v:'all',l:'all'}].concat(Object.keys(CATALOG).map(function(k){return {v:k, l: state.lang==='ru'?CATALOG[k].ru:CATALOG[k].en};})),
+    category: [{v:'all',l:'all'}].concat(Object.keys(CATALOG).map(function(k){return {v:k,l:state.lang==='ru'?CATALOG[k].ru:CATALOG[k].en};})),
     sort: [{v:'popular',l:'sortPop'},{v:'name',l:'sortName'},{v:'name-desc',l:'sortNameD'}],
     type: [{v:'all',l:'typeAll'},{v:'web',l:'typeWeb'},{v:'cli',l:'typeCli'},{v:'api',l:'typeApi'}],
     access: [{v:'any',l:'accAny'},{v:'free',l:'accFree'},{v:'freemium',l:'accFreemium'},{v:'paid',l:'accPaid'}]
@@ -603,17 +705,16 @@ function sortCards(){
   });
 }
 
-// ============ ПЕРЕВОД ============
 function applyLang(){
   document.documentElement.lang = state.lang;
   document.title = state.lang === 'ru' ? 'OSINT — Каталог инструментов' : 'OSINT — Tools Catalog';
   document.querySelectorAll('[data-i18n]').forEach(function(el){
-    var key = el.dataset.i18n;
-    if (I18N[state.lang][key]) el.textContent = I18N[state.lang][key];
+    var k = el.dataset.i18n;
+    if (I18N[state.lang][k]) el.textContent = I18N[state.lang][k];
   });
   document.querySelectorAll('[data-i18n-ph]').forEach(function(el){
-    var key = el.dataset.i18nPh;
-    if (I18N[state.lang][key]) el.placeholder = I18N[state.lang][key];
+    var k = el.dataset.i18nPh;
+    if (I18N[state.lang][k]) el.placeholder = I18N[state.lang][k];
   });
   document.querySelectorAll('.lang button').forEach(function(b){
     b.classList.toggle('active', b.dataset.lang === state.lang);
@@ -622,13 +723,63 @@ function applyLang(){
   buildDrops();
 }
 
-// ============ ВИД ============
 function applyView(){
   document.querySelectorAll('.cat').forEach(function(cat){
     var body = cat.querySelector('.cb');
     body.classList.remove('grid','compact','tree');
     if (state.view !== 'list') body.classList.add(state.view);
   });
+}
+
+// ============ МОДАЛКА FACE SEARCH ============
+var faceModal = document.getElementById('faceModal');
+var dropZone = document.getElementById('dropZone');
+var fileInput = document.getElementById('fileInput');
+var preview = document.getElementById('preview');
+var previewImg = document.getElementById('previewImg');
+var fileName = document.getElementById('fileName');
+var services = document.getElementById('services');
+var changeBtn = document.getElementById('changeBtn');
+
+function openModal(){ faceModal.classList.add('show'); document.body.style.overflow = 'hidden'; }
+function closeModal(){ faceModal.classList.remove('show'); document.body.style.overflow = ''; }
+
+document.getElementById('faceBtn').onclick = openModal;
+document.getElementById('mClose').onclick = closeModal;
+faceModal.onclick = function(e){ if (e.target === faceModal) closeModal(); };
+document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeModal(); });
+
+dropZone.onclick = function(){ fileInput.click(); };
+changeBtn.onclick = function(e){ e.stopPropagation(); fileInput.click(); };
+
+['dragenter','dragover'].forEach(function(ev){
+  dropZone.addEventListener(ev, function(e){ e.preventDefault(); dropZone.classList.add('drag'); });
+});
+['dragleave','drop'].forEach(function(ev){
+  dropZone.addEventListener(ev, function(e){ e.preventDefault(); dropZone.classList.remove('drag'); });
+});
+dropZone.addEventListener('drop', function(e){
+  var files = e.dataTransfer.files;
+  if (files && files[0]) handleFile(files[0]);
+});
+fileInput.onchange = function(e){
+  if (e.target.files && e.target.files[0]) handleFile(e.target.files[0]);
+};
+
+function handleFile(file){
+  if (!file.type.startsWith('image/')){
+    alert(state.lang === 'ru' ? 'Пожалуйста, выберите изображение' : 'Please select an image');
+    return;
+  }
+  var reader = new FileReader();
+  reader.onload = function(ev){
+    previewImg.src = ev.target.result;
+    fileName.textContent = file.name + ' · ' + (file.size/1024).toFixed(1) + ' KB';
+    dropZone.style.display = 'none';
+    preview.classList.add('show');
+    services.classList.add('show');
+  };
+  reader.readAsDataURL(file);
 }
 
 // ============ ИНИЦИАЛИЗАЦИЯ ============
@@ -638,18 +789,15 @@ document.querySelectorAll('.lang button').forEach(function(btn){
     applyLang();
   };
 });
-
 document.getElementById('search').oninput = function(e){
   state.query = e.target.value.toLowerCase().trim();
   applyFilters();
 };
-
 document.getElementById('favBtn').onclick = function(){
   state.favOnly = !state.favOnly;
   this.classList.toggle('active', state.favOnly);
   applyFilters();
 };
-
 document.querySelectorAll('.vw button').forEach(function(btn){
   btn.onclick = function(){
     document.querySelectorAll('.vw button').forEach(function(b){ b.classList.remove('active'); });
