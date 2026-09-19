@@ -22,7 +22,14 @@ var I18N = {
     s5:'Обратный поиск изображения от Microsoft', s6:'Поиск источника и ранних версий изображения',
     s7:'Анализ подлинности фото (ELA-метод)',
     note:'Сервисы открываются в новых вкладках — фото туда нужно загрузить вручную. Мы не отправляем ваше фото на сторонние серверы. Все сервисы принадлежат третьим лицам, используйте на свой риск и только для легальных целей.',
-    visits:'посещений', today:'сегодня'
+    metaTitle:'Метаданные фото (EXIF)',
+    metaEmpty:'Метаданные не найдены — фото сжато или очищено.',
+    metaMake:'Производитель', metaModel:'Модель', metaSoftware:'ПО',
+    metaDate:'Дата съёмки', metaExposure:'Выдержка', metaAperture:'Диафрагма',
+    metaFocal:'Фокусное расстояние', metaOrientation:'Ориентация',
+    metaRes:'Разрешение DPI', metaImgRes:'Разрешение изображения',
+    metaFileSize:'Размер файла', metaFileType:'Тип файла', metaGPS:'GPS-координаты',
+    errImg:'Пожалуйста, выберите изображение'
   },
   en:{
     title:'OSINT Tools Catalog', founder:'founder —', tg:'Telegram Channel',
@@ -43,39 +50,20 @@ var I18N = {
     s5:'Reverse image search by Microsoft', s6:'Find image source and early versions',
     s7:'Photo authenticity analysis (ELA)',
     note:'Services open in new tabs — upload photo there manually. We do not send your photo to third-party servers. All services belong to third parties, use at your own risk and only for legal purposes.',
-    visits:'visits', today:'today'
+    metaTitle:'Photo metadata (EXIF)',
+    metaEmpty:'No metadata found — photo compressed or cleaned.',
+    metaMake:'Make', metaModel:'Model', metaSoftware:'Software',
+    metaDate:'Date taken', metaExposure:'Exposure', metaAperture:'Aperture',
+    metaFocal:'Focal length', metaOrientation:'Orientation',
+    metaRes:'Resolution DPI', metaImgRes:'Image resolution',
+    metaFileSize:'File size', metaFileType:'File type', metaGPS:'GPS coordinates',
+    errImg:'Please select an image'
   }
 };
 
 var state = { lang:'ru', category:'all', sort:'popular', type:'all', access:'any', query:'', favOnly:false, view:'list' };
 var favs = JSON.parse(localStorage.getItem('osint_favs') || '[]');
 function t(k){ return I18N[state.lang][k] || k; }
-
-// ============ СЧЁТЧИК ПОСЕЩЕНИЙ ============
-// Используем CounterAPI — бесплатный публичный сервис без регистрации
-function initVisits(){
-  var visitsEl = document.getElementById('visits');
-  var countEl = document.getElementById('visitCount');
-  if (!visitsEl || !countEl) return;
-  visitsEl.style.display = 'inline-flex';
-
-  // Получаем счётчик (уникальный ключ для твоего сайта)
-  var key = 'osint-catalog-genoxid13';
-  var isVisit = !sessionStorage.getItem('osint_visited');
-  if (isVisit) sessionStorage.setItem('osint_visited', '1');
-
-  // Запрашиваем текущее значение
-  fetch('https://api.counterapi.dev/v1/' + key + '/visits/up')
-    .then(function(r){ return r.json(); })
-    .then(function(data){
-      var total = data.count || 0;
-      countEl.textContent = total.toLocaleString('ru-RU') + ' ' + t('visits');
-    })
-    .catch(function(){
-      // Fallback — если API недоступно
-      countEl.textContent = '1 000+ ' + t('visits');
-    });
-}
 
 // ============ КАТАЛОГ ============
 function buildCatalog(){
@@ -260,12 +248,6 @@ function applyLang(){
   });
   buildCatalog();
   buildDrops();
-  // Обновляем текст счётчика при смене языка
-  var countEl = document.getElementById('visitCount');
-  if (countEl && countEl.textContent.indexOf(' ') !== -1){
-    var parts = countEl.textContent.split(' ');
-    countEl.textContent = parts[0] + ' ' + t('visits');
-  }
 }
 
 function applyView(){
@@ -314,7 +296,7 @@ fileInput.onchange = function(e){
 
 function handleFile(file){
   if (!file.type.startsWith('image/')){
-    alert(state.lang === 'ru' ? 'Пожалуйста, выберите изображение' : 'Please select an image');
+    alert(t('errImg'));
     return;
   }
   var reader = new FileReader();
@@ -324,8 +306,179 @@ function handleFile(file){
     dropZone.style.display = 'none';
     preview.classList.add('show');
     services.classList.add('show');
+    parseEXIF(file);
   };
   reader.readAsDataURL(file);
+}
+
+// ============ EXIF-ПАРСЕР ============
+function parseEXIF(file){
+  var metaEl = document.getElementById('metadata');
+  var gridEl = document.getElementById('metaGrid');
+  var emptyEl = document.getElementById('metaEmpty');
+  if (!metaEl || !gridEl) return;
+
+  var r = new FileReader();
+  r.onload = function(e){
+    var buf = e.target.result;
+    var view = new DataView(buf);
+    var tags = {};
+
+    // Проверка что это JPEG (EXIF есть только в JPEG/TIFF)
+    if (view.getUint16(0) !== 0xFFD8){
+      metaEl.classList.add('show');
+      gridEl.innerHTML = '';
+      emptyEl.classList.add('show');
+      return;
+    }
+
+    var length = view.byteLength;
+    var offset = 2;
+    while (offset < length){
+      if (view.getUint16(offset) === 0xFFE1){
+        offset += 2;
+        if (view.getUint32(offset) !== 0x45786966){ break; }
+        var little = view.getUint16(offset + 6) === 0x4949;
+        offset += 6;
+        var tagsStart = offset + 4;
+        var tagCount = view.getUint16(tagsStart, little);
+        var i;
+        for (i = 0; i < tagCount; i++){
+          var tagOffset = tagsStart + 2 + i * 12;
+          var tag = view.getUint16(tagOffset, little);
+          var type = view.getUint16(tagOffset + 2, little);
+          var count = view.getUint32(tagOffset + 4, little);
+          var valOffset = tagOffset + 8;
+          var size = getTypeSize(type);
+          var valueBytes = size * count;
+          var actualOffset = (valueBytes > 4) ? view.getUint32(valOffset, little) + (tagsStart - 6) : valOffset;
+          tags[tag] = readTagValue(view, actualOffset, type, count, little);
+          if (tag === 0x8769){
+            var ifdOff = view.getUint32(valOffset, little) + (tagsStart - 6);
+            var ifdCount = view.getUint16(ifdOff, little);
+            for (var j = 0; j < ifdCount; j++){
+              var ifdTagOff = ifdOff + 2 + j * 12;
+              var ifdTag = view.getUint16(ifdTagOff, little);
+              var ifdType = view.getUint16(ifdTagOff + 2, little);
+              var ifdCount2 = view.getUint32(ifdTagOff + 4, little);
+              var ifdValOff = ifdTagOff + 8;
+              var ifdSize = getTypeSize(ifdType) * ifdCount2;
+              var actualIfdOff = (ifdSize > 4) ? view.getUint32(ifdValOff, little) + (tagsStart - 6) : ifdValOff;
+              tags[ifdTag] = readTagValue(view, actualIfdOff, ifdType, ifdCount2, little);
+            }
+          }
+        }
+        break;
+      }
+      offset += 2 + view.getUint16(offset + 2);
+    }
+
+    renderMeta(tags, file);
+  };
+  r.readAsArrayBuffer(file);
+}
+
+function getTypeSize(t){
+  return {1:1,2:1,3:2,4:4,5:8,7:1,9:4,10:8}[t] || 1;
+}
+
+function readTagValue(view, off, type, count, little){
+  try {
+    if (type === 2){
+      var s = '';
+      for (var i = 0; i < count - 1; i++){
+        var c = view.getUint8(off + i);
+        if (c === 0) break;
+        s += String.fromCharCode(c);
+      }
+      return s.trim();
+    }
+    if (type === 3){
+      return count === 1 ? view.getUint16(off, little) : Array.from({length: Math.min(count, 4)}, function(_, i){ return view.getUint16(off + i*2, little); }).join(', ');
+    }
+    if (type === 4){
+      return count === 1 ? view.getUint32(off, little) : Array.from({length: Math.min(count, 4)}, function(_, i){ return view.getUint32(off + i*4, little); }).join(', ');
+    }
+    if (type === 5){
+      var num = view.getUint32(off, little);
+      var den = view.getUint32(off + 4, little);
+      return den ? (num / den) : num;
+    }
+    if (type === 7) return '[binary]';
+    if (type === 10){
+      var n = view.getInt32(off, little);
+      var d = view.getInt32(off + 4, little);
+      return d ? (n / d) : n;
+    }
+  } catch(e) { return null; }
+  return null;
+}
+
+function renderMeta(tags, file){
+  var metaEl = document.getElementById('metadata');
+  var gridEl = document.getElementById('metaGrid');
+  var emptyEl = document.getElementById('metaEmpty');
+  if (!metaEl) return;
+  metaEl.classList.add('show');
+
+  var items = [];
+
+  if (tags[0x010F]) items.push({k: t('metaMake'), v: tags[0x010F]});
+  if (tags[0x0110]) items.push({k: t('metaModel'), v: tags[0x0110]});
+  if (tags[0x0131]) items.push({k: t('metaSoftware'), v: tags[0x0131]});
+  if (tags[0x9003]) items.push({k: t('metaDate'), v: tags[0x9003]});
+  else if (tags[0x0132]) items.push({k: t('metaDate'), v: tags[0x0132]});
+  if (tags[0x829A] && typeof tags[0x829A] === 'number') items.push({k: t('metaExposure'), v: '1/' + Math.round(1/tags[0x829A]) + 's'});
+  if (tags[0x829D] && typeof tags[0x829D] === 'number') items.push({k: t('metaAperture'), v: 'f/' + tags[0x829D].toFixed(1)});
+  if (tags[0x8827]) items.push({k: 'ISO', v: tags[0x8827]});
+  if (tags[0x920A] && typeof tags[0x920A] === 'number') items.push({k: t('metaFocal'), v: tags[0x920A].toFixed(1) + 'mm'});
+  if (tags[0x0112]){
+    var or = {1:'Normal',3:'180°',6:'90° CW',8:'90° CCW'}[tags[0x0112]] || tags[0x0112];
+    items.push({k: t('metaOrientation'), v: or});
+  }
+  if (tags[0x011A] || tags[0x011B]){
+    var xr = tags[0x011A] ? (typeof tags[0x011A] === 'number' ? tags[0x011A].toFixed(0) : tags[0x011A]) : '?';
+    var yr = tags[0x011B] ? (typeof tags[0x011B] === 'number' ? tags[0x011B].toFixed(0) : tags[0x011B]) : '?';
+    items.push({k: t('metaRes'), v: xr + '×' + yr + ' dpi'});
+  }
+
+  // GPS
+  var gpsLat = tags[0x0002], gpsLon = tags[0x0004];
+  if (gpsLat && gpsLon && typeof gpsLat === 'number' && typeof gpsLon === 'number'){
+    var latRef = tags[0x0001] || 'N';
+    var lonRef = tags[0x0003] || 'E';
+    var lat = latRef === 'S' ? -gpsLat : gpsLat;
+    var lon = lonRef === 'W' ? -gpsLon : gpsLon;
+    var mapUrl = 'https://www.google.com/maps?q=' + lat + ',' + lon;
+    items.push({k: t('metaGPS'), v: '<a href="' + mapUrl + '" target="_blank" rel="noopener">' + lat.toFixed(4) + ', ' + lon.toFixed(4) + '</a>', full: true});
+  }
+
+  items.push({k: t('metaFileSize'), v: (file.size/1024).toFixed(1) + ' KB'});
+  items.push({k: t('metaFileType'), v: file.type});
+
+  // Разрешение картинки
+  var img = new Image();
+  img.onload = function(){
+    var resItem = document.createElement('div');
+    resItem.className = 'meta-item';
+    resItem.innerHTML = '<div class="k">' + t('metaImgRes') + '</div><div class="v">' + img.width + '×' + img.height + ' px</div>';
+    if (gridEl.firstChild) gridEl.insertBefore(resItem, gridEl.firstChild);
+    else gridEl.appendChild(resItem);
+    URL.revokeObjectURL(img.src);
+  };
+  img.src = URL.createObjectURL(file);
+
+  if (items.length === 0){
+    gridEl.innerHTML = '';
+    emptyEl.classList.add('show');
+    return;
+  }
+
+  emptyEl.classList.remove('show');
+  gridEl.innerHTML = items.map(function(it){
+    var cls = 'meta-item' + (it.full ? ' full' : '');
+    return '<div class="' + cls + '"><div class="k">' + it.k + '</div><div class="v">' + it.v + '</div></div>';
+  }).join('');
 }
 
 // ============ ИНИЦИАЛИЗАЦИЯ ============
@@ -354,6 +507,5 @@ document.querySelectorAll('.vw button').forEach(function(btn){
 });
 
 applyLang();
-initVisits();
 
 })();
