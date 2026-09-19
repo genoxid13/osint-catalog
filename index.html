@@ -4,6 +4,8 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>OSINT — Каталог инструментов</title>
+<link rel="icon" type="image/png" href="favicon.png">
+<link rel="apple-touch-icon" href="favicon.png">
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 <style>
 *{margin:0;padding:0;box-sizing:border-box;-webkit-tap-highlight-color:transparent}
@@ -26,7 +28,9 @@ header{text-align:center;padding:40px 20px 30px}
 .logo{width:90px;height:90px;margin:0 auto 24px;display:flex;animation:lgo .6s cubic-bezier(.16,1,.3,1) backwards;animation-delay:.1s}
 @keyframes lgo{from{opacity:0;transform:scale(.7) rotate(-10deg)}}
 .logo svg{width:100%;transition:.4s}
+.logo img{width:100%;height:100%;border-radius:50%;object-fit:cover;border:2px solid rgba(255,255,255,.1);transition:.4s}
 .logo:hover svg{filter:drop-shadow(0 0 30px rgba(0,255,170,.35));transform:rotate(8deg) scale(1.05)}
+.logo:hover img{filter:drop-shadow(0 0 30px rgba(168,85,247,.5));transform:rotate(8deg) scale(1.05)}
 h1{font-size:32px;font-weight:600;margin-bottom:16px;animation:fu .5s .15s cubic-bezier(.16,1,.3,1) backwards}
 .founder{font-size:15px;color:var(--tx2);display:flex;align-items:center;justify-content:center;gap:8px;flex-wrap:wrap;animation:fu .5s .25s cubic-bezier(.16,1,.3,1) backwards}
 @keyframes fu{from{opacity:0;transform:translateY(12px)}}
@@ -125,9 +129,6 @@ footer a.tg{color:var(--tg);text-decoration:none;display:inline-flex;align-items
 footer a.tg:hover{background:rgba(42,171,238,.15);border-color:rgba(42,171,238,.5);transform:translateY(-2px);box-shadow:0 8px 24px rgba(42,171,238,.2)}
 footer a.tg svg{width:18px;height:18px;fill:var(--tg);transition:.3s}
 footer a.tg:hover svg{transform:rotate(-15deg) scale(1.1)}
-.visits{display:inline-flex;align-items:center;gap:6px;color:var(--tx3);font-size:12px;margin-top:16px;padding:6px 12px;background:var(--card);border:1px solid var(--br);border-radius:8px}
-.visits .dot{width:6px;height:6px;border-radius:50%;background:var(--gr);animation:pulse 2s infinite}
-@keyframes pulse{50%{box-shadow:0 0 0 6px rgba(34,197,94,0)}}
 .modal-bg{position:fixed;inset:0;background:rgba(0,0,0,.85);backdrop-filter:blur(12px);z-index:1000;display:flex;align-items:center;justify-content:center;padding:20px;opacity:0;visibility:hidden;transition:.3s}
 .modal-bg.show{opacity:1;visibility:visible}
 .modal{background:var(--card);border:1px solid var(--br);border-radius:20px;max-width:640px;width:100%;max-height:90vh;overflow-y:auto;transform:scale(.95) translateY(20px);transition:.4s cubic-bezier(.16,1,.3,1);box-shadow:0 24px 80px rgba(0,0,0,.6)}
@@ -168,8 +169,22 @@ footer a.tg:hover svg{transform:rotate(-15deg) scale(1.1)}
 .svc-arrow svg{width:16px;height:16px}
 .m-note{margin-top:20px;padding:14px;background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.2);border-radius:10px;font-size:12.5px;color:var(--tx2);line-height:1.5;display:flex;gap:10px}
 .m-note svg{width:18px;height:18px;color:var(--gd);flex-shrink:0;margin-top:1px}
+.metadata{margin-top:24px;display:none}
+.metadata.show{display:block;animation:fu .4s}
+.metadata h4{font-size:15px;font-weight:600;margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.metadata h4 .dot.blue{width:8px;height:8px;border-radius:50%;background:var(--bl);animation:pulse 2s infinite}
+.meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.meta-item{background:var(--bg2);border:1px solid var(--br);border-radius:10px;padding:10px 12px;transition:.25s}
+.meta-item:hover{border-color:var(--br2);background:var(--card2)}
+.meta-item .k{font-size:11.5px;color:var(--tx3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+.meta-item .v{font-size:13.5px;color:var(--tx);word-break:break-word;font-weight:500}
+.meta-item .v a{color:var(--bl);text-decoration:none;border-bottom:1px dashed var(--bl)}
+.meta-item .v a:hover{border-bottom-style:solid}
+.meta-item.full{grid-column:1/-1}
+.meta-empty{padding:14px;background:rgba(251,191,36,.06);border:1px solid rgba(251,191,36,.2);border-radius:10px;font-size:13px;color:var(--tx2);display:none}
+.meta-empty.show{display:block}
 #fileInput{display:none}
-@media(max-width:520px){h1{font-size:26px}.logo{width:70px}.filters{grid-template-columns:1fr}.cn{font-size:16px}.face-btn span{display:none}.face-btn{padding:8px 10px}}
+@media(max-width:520px){h1{font-size:26px}.logo{width:70px}.filters{grid-template-columns:1fr}.cn{font-size:16px}.face-btn span{display:none}.face-btn{padding:8px 10px}.meta-grid{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){*,*:before,*:after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
 </style>
 </head>
@@ -195,11 +210,7 @@ footer a.tg:hover svg{transform:rotate(-15deg) scale(1.1)}
 
 <header>
   <div class="logo">
-    <svg viewBox="0 0 100 100" fill="none">
-      <path d="M50 8 C 30 8, 18 22, 18 38 C 18 46, 22 52, 28 55 C 24 58, 20 63, 20 70 C 20 82, 32 92, 50 92 C 68 92, 80 82, 80 70 C 80 63, 76 58, 72 55 C 78 52, 82 46, 82 38 C 82 22, 70 8, 50 8 Z" stroke="#f0f0f0" stroke-width="6"/>
-      <path d="M50 30 C 42 30, 36 36, 36 44 C 36 52, 42 58, 50 58 C 58 58, 64 52, 64 44" stroke="#f0f0f0" stroke-width="6" stroke-linecap="round"/>
-      <path d="M50 58 C 46 62, 44 68, 46 74" stroke="#f0f0f0" stroke-width="6" stroke-linecap="round"/>
-    </svg>
+    <img src="favicon.png" alt="genoxid" onerror="this.style.display='none'">
   </div>
   <h1 data-i18n="title">Каталог инструментов OSINT</h1>
   <div class="founder">
@@ -244,10 +255,6 @@ footer a.tg:hover svg{transform:rotate(-15deg) scale(1.1)}
     <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
     osint-catalog.xyz
   </div>
-  <div class="visits" id="visits" style="display:none">
-    <span class="dot"></span>
-    <span id="visitCount">...</span>
-  </div>
   <div style="margin-top:24px">
     <a class="tg" href="https://t.me/+LQFsPGzYkBRhMGI6" target="_blank">
       <svg viewBox="0 0 24 24"><path d="M12 0C5.373 0 0 5.373 0 12s5.373 12 12 12 12-5.373 12-12S18.627 0 12 0zm5.562 8.248l-1.97 9.289c-.145.658-.537.818-1.084.508l-3-2.21-1.447 1.394c-.16.16-.295.295-.605.295l.213-3.053 5.56-5.023c.242-.213-.054-.333-.373-.121L7.35 13.973l-2.965-.924c-.643-.204-.657-.643.136-.953l11.57-4.461c.537-.194 1.006.131.472.613z"/></svg>
@@ -281,6 +288,13 @@ footer a.tg:hover svg{transform:rotate(-15deg) scale(1.1)}
         <div class="file-name" id="fileName"></div>
         <button class="change-btn" id="changeBtn" data-i18n="changeBtn">Выбрать другое фото</button>
       </div>
+
+      <div class="metadata" id="metadata">
+        <h4><span class="dot blue"></span><span data-i18n="metaTitle">Метаданные фото (EXIF)</span></h4>
+        <div class="meta-grid" id="metaGrid"></div>
+        <div class="meta-empty" id="metaEmpty" data-i18n="metaEmpty">Метаданные не найдены — фото сжато или очищено.</div>
+      </div>
+
       <div class="services" id="services">
         <h4><span class="dot"></span><span data-i18n="svcTitle">Проверить это фото в:</span></h4>
         <div class="svc-list">
