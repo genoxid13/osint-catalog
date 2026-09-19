@@ -33,8 +33,7 @@ var CATALOG = {
     ['Yandex Dorks','📖','Операторы Яндекса для поиска','Yandex advanced search operators','https://yandex.ru/support/search/query-language/','web','free'],
     ['PublicWWW','🌐','Поиск по HTML-коду сайтов','Search by HTML code','https://publicwww.com','web','freemium'],
     ['NerdyData','🔎','Поиск технологий и кода на сайтах','Search tech and code on sites','https://nerdydata.com','web','freemium'],
-    ['SearchCode','💻','Поиск по исходному коду в репозиториях','Source code search','https://searchcode.com','web','free'],
-    ['Shodan Search','🌐','Поиск по устройствам и сервисам','Search devices and services','https://www.shodan.io','web','freemium']
+    ['SearchCode','💻','Поиск по исходному коду в репозиториях','Source code search','https://searchcode.com','web','free']
   ]},
 
   // ========== ПОИСК ЛЮДЕЙ ==========
@@ -206,8 +205,7 @@ var CATALOG = {
     ['Tor2Web','🧅','Доступ к .onion через обычный браузер','Access .onion via regular browser','https://www.tor2web.org','web','free'],
     ['Onion.Live','📋','Каталог onion-сайтов','Onion sites catalog','https://onion.live','web','free'],
     ['Dark.fail','🕶️','Проверенный список onion-зеркал','Verified onion mirrors','https://dark.fail','web','free'],
-    ['OnionLand','🌐','Поисковик по onion-сайтам','Onion sites search engine','https://onionlandsearchengine.com','web','free'],
-    ['Tor66','🔎','Поисковик по даркнету','Dark web search engine','http://tor66sewebgixwhcqfnp5inzp5x5uohhdy3kvtnyfxc2e5mxiuh34iid.onion','web','free']
+    ['OnionLand','🌐','Поисковик по onion-сайтам','Onion sites search engine','https://onionlandsearchengine.com','web','free']
   ]},
 
   // ========== AI ==========
