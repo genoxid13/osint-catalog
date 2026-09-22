@@ -65,6 +65,72 @@ var state = { lang:'ru', category:'all', sort:'popular', type:'all', access:'any
 var favs = JSON.parse(localStorage.getItem('osint_favs') || '[]');
 function t(k){ return I18N[state.lang][k] || k; }
 
+// ============ ЗАГРУЗОЧНЫЙ ЭКРАН ============
+function initLoader(){
+  // Частицы на фоне загрузки
+  var pContainer = document.getElementById('loaderParticles');
+  if (pContainer){
+    for (var i = 0; i < 30; i++){
+      var p = document.createElement('span');
+      p.style.left = Math.random() * 100 + '%';
+      p.style.bottom = '0';
+      p.style.animationDelay = (Math.random() * 4) + 's';
+      p.style.animationDuration = (3 + Math.random() * 3) + 's';
+      var colors = ['#4a9eff', '#a855f7', '#2AABEE', '#22c55e'];
+      p.style.background = colors[Math.floor(Math.random() * colors.length)];
+      p.style.boxShadow = '0 0 10px currentColor';
+      pContainer.appendChild(p);
+    }
+  }
+
+  // Через 2 секунды скрываем лоадер и показываем сайт
+  setTimeout(function(){
+    var loader = document.getElementById('loader');
+    if (loader) loader.classList.add('hidden');
+    document.body.classList.add('loaded');
+    // Убираем лоадер из DOM через 1 сек после скрытия
+    setTimeout(function(){
+      if (loader && loader.parentNode) loader.parentNode.removeChild(loader);
+    }, 1000);
+  }, 2000);
+}
+
+// ============ RIPPLE-ЭФФЕКТ ============
+function initRipple(){
+  document.addEventListener('click', function(e){
+    var btn = e.target.closest('.btn-ripple, .fav, .face-btn, .cl, .cf-btn, .svc, .change-btn, .lang button, .vw button, footer a.tg');
+    if (!btn) return;
+    var rect = btn.getBoundingClientRect();
+    var ripple = document.createElement('span');
+    var size = Math.max(rect.width, rect.height);
+    var x = e.clientX - rect.left - size / 2;
+    var y = e.clientY - rect.top - size / 2;
+    ripple.style.cssText = 'position:absolute;width:' + size + 'px;height:' + size + 'px;left:' + x + 'px;top:' + y + 'px;background:radial-gradient(circle,rgba(74,158,255,.4),transparent 70%);border-radius:50%;transform:scale(0);animation:rippleAnim .7s ease-out;pointer-events:none;z-index:1;';
+    if (getComputedStyle(btn).position === 'static'){
+      btn.style.position = 'relative';
+    }
+    btn.style.overflow = 'hidden';
+    btn.appendChild(ripple);
+    setTimeout(function(){ ripple.remove(); }, 700);
+  });
+
+  // Инжектим keyframes для ripple
+  if (!document.getElementById('rippleStyles')){
+    var style = document.createElement('style');
+    style.id = 'rippleStyles';
+    style.textContent = '@keyframes rippleAnim{to{transform:scale(3);opacity:0}}';
+    document.head.appendChild(style);
+  }
+}
+
+// ============ ПЛАВНОЕ ПОЯВЛЕНИЕ КАРТОЧЕК ============
+function staggerCards(){
+  var cards = document.querySelectorAll('.card');
+  cards.forEach(function(card, i){
+    card.style.animationDelay = Math.min(i * 0.02, 0.5) + 's';
+  });
+}
+
 // ============ КАТАЛОГ ============
 function buildCatalog(){
   if (typeof CATALOG === 'undefined'){
@@ -97,6 +163,7 @@ function buildCatalog(){
     content.appendChild(section);
   });
   bindEvents();
+  staggerCards();
   applyFilters();
 }
 
@@ -210,7 +277,11 @@ function applyFilters(){
   var prev = parseInt(shownEl.textContent) || 0;
   shownEl.textContent = visible;
   document.getElementById('total').textContent = '/ ' + document.querySelectorAll('.card').length;
-  if (prev !== visible){ shownEl.classList.remove('bump'); void shownEl.offsetWidth; shownEl.classList.add('bump'); }
+  if (prev !== visible){
+    shownEl.classList.remove('bump');
+    void shownEl.offsetWidth;
+    shownEl.classList.add('bump');
+  }
   document.getElementById('empty').classList.toggle('show', visible === 0);
   sortCards();
   var catSel = document.querySelector('.sel[data-filter="category"]');
@@ -269,8 +340,14 @@ var fileName = document.getElementById('fileName');
 var services = document.getElementById('services');
 var changeBtn = document.getElementById('changeBtn');
 
-function openModal(){ faceModal.classList.add('show'); document.body.style.overflow = 'hidden'; }
-function closeModal(){ faceModal.classList.remove('show'); document.body.style.overflow = ''; }
+function openModal(){
+  faceModal.classList.add('show');
+  document.body.style.overflow = 'hidden';
+}
+function closeModal(){
+  faceModal.classList.remove('show');
+  document.body.style.overflow = '';
+}
 
 document.getElementById('faceBtn').onclick = openModal;
 document.getElementById('mClose').onclick = closeModal;
@@ -306,6 +383,11 @@ function handleFile(file){
     dropZone.style.display = 'none';
     preview.classList.add('show');
     services.classList.add('show');
+    // Сбрасываем старые метаданные
+    var grid = document.getElementById('metaGrid');
+    if (grid) grid.innerHTML = '';
+    var empty = document.getElementById('metaEmpty');
+    if (empty) empty.classList.remove('show');
     parseEXIF(file);
   };
   reader.readAsDataURL(file);
@@ -324,7 +406,6 @@ function parseEXIF(file){
     var view = new DataView(buf);
     var tags = {};
 
-    // Проверка что это JPEG (EXIF есть только в JPEG/TIFF)
     if (view.getUint16(0) !== 0xFFD8){
       metaEl.classList.add('show');
       gridEl.innerHTML = '';
@@ -342,8 +423,7 @@ function parseEXIF(file){
         offset += 6;
         var tagsStart = offset + 4;
         var tagCount = view.getUint16(tagsStart, little);
-        var i;
-        for (i = 0; i < tagCount; i++){
+        for (var i = 0; i < tagCount; i++){
           var tagOffset = tagsStart + 2 + i * 12;
           var tag = view.getUint16(tagOffset, little);
           var type = view.getUint16(tagOffset + 2, little);
@@ -422,7 +502,6 @@ function renderMeta(tags, file){
   metaEl.classList.add('show');
 
   var items = [];
-
   if (tags[0x010F]) items.push({k: t('metaMake'), v: tags[0x010F]});
   if (tags[0x0110]) items.push({k: t('metaModel'), v: tags[0x0110]});
   if (tags[0x0131]) items.push({k: t('metaSoftware'), v: tags[0x0131]});
@@ -442,7 +521,6 @@ function renderMeta(tags, file){
     items.push({k: t('metaRes'), v: xr + '×' + yr + ' dpi'});
   }
 
-  // GPS
   var gpsLat = tags[0x0002], gpsLon = tags[0x0004];
   if (gpsLat && gpsLon && typeof gpsLat === 'number' && typeof gpsLon === 'number'){
     var latRef = tags[0x0001] || 'N';
@@ -456,7 +534,6 @@ function renderMeta(tags, file){
   items.push({k: t('metaFileSize'), v: (file.size/1024).toFixed(1) + ' KB'});
   items.push({k: t('metaFileType'), v: file.type});
 
-  // Разрешение картинки
   var img = new Image();
   img.onload = function(){
     var resItem = document.createElement('div');
@@ -506,6 +583,9 @@ document.querySelectorAll('.vw button').forEach(function(btn){
   };
 });
 
+// Старт
+initLoader();
+initRipple();
 applyLang();
 
 })();
