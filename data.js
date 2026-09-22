@@ -1,7 +1,6 @@
 // ============ КАТАЛОГ OSINT-ИНСТРУМЕНТОВ ============
 // Формат: ['Название','Иконка','Описание RU','Описание EN','URL','Тип','Доступ']
 // Тип: web/cli/api | Доступ: free/freemium/paid
-// Чтобы добавить инструмент — просто допиши строку в нужный массив
 
 var CATALOG = {
 
@@ -16,7 +15,12 @@ var CATALOG = {
     ['InfoTracer','🕵️','Поиск людей по email, телефону, адресу (US)','People search by email, phone, address (US)','https://infotracer.com','web','paid'],
     ['ZabaSearch','🔎','Поиск людей и публичных записей (US)','People and public records (US)','https://www.zabasearch.com','web','free'],
     ['CyberBackgroundChecks','🔐','Поиск по публичным записям (US)','Public records search (US)','https://www.cyberbackgroundchecks.com','web','free'],
-    ['USPhoneBook','📖','Обратный поиск по телефону (US)','Reverse phone lookup (US)','https://www.usphonebook.com','web','free']
+    ['USPhoneBook','📖','Обратный поиск по телефону (US)','Reverse phone lookup (US)','https://www.usphonebook.com','web','free'],
+    ['Nuwber','📊','Поиск людей по телефону и email (US)','People search US','https://nuwber.com','web','freemium'],
+    ['BeenVerified','✅','Поиск по имени, email, телефону','People search by name, email, phone','https://www.beenverified.com','web','paid'],
+    ['Intelius','🔎','Отчёты о людях в США','US people reports','https://www.intelius.com','web','paid'],
+    ['Whitepages','📋','Поиск людей и телефонов (US)','People and phone search US','https://www.whitepages.com','web','freemium'],
+    ['Radaris','🔍','Поиск людей по всей сети','People search across the web','https://radaris.com','web','freemium']
   ]},
 
   // ========== ПОИСКОВЫЕ СИСТЕМЫ ==========
@@ -33,7 +37,9 @@ var CATALOG = {
     ['Yandex Dorks','📖','Операторы Яндекса для поиска','Yandex advanced search operators','https://yandex.ru/support/search/query-language/','web','free'],
     ['PublicWWW','🌐','Поиск по HTML-коду сайтов','Search by HTML code','https://publicwww.com','web','freemium'],
     ['NerdyData','🔎','Поиск технологий и кода на сайтах','Search tech and code on sites','https://nerdydata.com','web','freemium'],
-    ['SearchCode','💻','Поиск по исходному коду в репозиториях','Source code search','https://searchcode.com','web','free']
+    ['SearchCode','💻','Поиск по исходному коду','Source code search','https://searchcode.com','web','free'],
+    ['Greppr','🔍','Поисковик с альтернативной выдачей','Alternative search engine','https://greppr.org','web','free'],
+    ['Marginalia','📚','Поисковик по «маленькому интернету»','Search engine for the small web','https://search.marginalia.nu','web','free']
   ]},
 
   // ========== ПОИСК ЛЮДЕЙ ==========
@@ -60,7 +66,13 @@ var CATALOG = {
     ['CheckUsernames','✅','Проверка ника на 160+ сайтах','Check nick on 160+ sites','https://checkusernames.com','web','free'],
     ['EmailHippo','✉️','Проверка валидности email','Email validity check','https://tools.emailhippo.com','web','free'],
     ['Phonebook.cz','📖','Поиск email, доменов и поддоменов','Search emails, domains, subdomains','https://phonebook.cz','web','free'],
-    ['PeekYou','👥','Поиск людей по нику и соцсетям','People search by nick and socials','https://www.peekyou.com','web','free']
+    ['PeekYou','👥','Поиск людей по нику и соцсетям','People search by nick and socials','https://www.peekyou.com','web','free'],
+    ['InfoBel','🇷🇺','Российский сервис проверки контрагентов и людей','Russian people and company check','https://infobel.com','web','freemium'],
+    ['Checko','🇷🇺','Проверка компаний и ИП (РФ)','Russian companies check','https://checko.ru','web','free'],
+    ['Rusprofile','🇷🇺','База данных российских организаций','Russian company database','https://www.rusprofile.ru','web','free'],
+    ['Zachestnyibiznes','🇷🇺','Проверка бизнеса и ИП (РФ)','Russian business check','https://zachestnyibiznes.ru','web','free'],
+    ['Sudact','🇷🇺','Судебные решения РФ','Russian court decisions','https://sudact.ru','web','free'],
+    ['FSSP','🇷🇺','Проверка долгов ФССП (РФ)','Russian enforcement proceedings','https://fssp.gov.ru/iss/ip','web','free']
   ]},
 
   // ========== СОЦИАЛЬНЫЕ СЕТИ ==========
@@ -86,7 +98,10 @@ var CATALOG = {
     ['Picuki','📸','Просмотр Instagram-профилей и хэштегов','View Instagram profiles and hashtags','https://www.picuki.com','web','free'],
     ['Inflact','📊','Аналитика Instagram-профилей','Instagram profile analytics','https://inflact.com','web','freemium'],
     ['SaveFrom','📥','Скачивание видео с YouTube, Instagram, TikTok','Download video from YouTube, Instagram, TikTok','https://savefrom.net','web','free'],
-    ['Imgur','📷','Поиск по картинкам Imgur','Search images on Imgur','https://imgur.com','web','free']
+    ['Imgur','📷','Поиск по картинкам Imgur','Search images on Imgur','https://imgur.com','web','free'],
+    ['Bellingcat TikTok','🎵','Анализ TikTok-видео и хэштегов','TikTok video and hashtag analysis','https://www.bellingcat.com/resources/2022/03/16/tiktok-osint-tools/','web','free'],
+    ['VKontakte Search','🇷🇺','Продвинутый поиск ВКонтакте','Advanced VK search','https://vk.com/search','web','free'],
+    ['OK.ru Search','🇷🇺','Поиск по Одноклассникам','Search on Odnoklassniki','https://ok.ru/search','web','free']
   ]},
 
   // ========== МЕССЕНДЖЕРЫ ==========
@@ -97,7 +112,10 @@ var CATALOG = {
     ['Snapchat Map','📷','Публичная карта Snapchat Stories','Public Snapchat Stories map','https://map.snapchat.com','web','free'],
     ['Discord.id','🤖','Поиск Discord-профиля по ID','Find Discord profile by ID','https://discord.id','web','free'],
     ['Telegram Analytics','📈','Каталог и аналитика Telegram-каналов','Telegram channels directory','https://telegramchannels.me','web','free'],
-    ['Telepathy','🧠','Анализ Telegram-чатов и каналов','Analyze Telegram chats and channels','https://telepathy.io','web','freemium']
+    ['Telepathy','🧠','Анализ Telegram-чатов и каналов','Analyze Telegram chats and channels','https://telepathy.io','web','freemium'],
+    ['Telemetrio','📊','Каталог Telegram-каналов со статистикой','Telegram channels with stats','https://telemetr.io','web','free'],
+    ['TelegramDB','🗃️','База Telegram-каналов и чатов','Telegram channels and chats database','https://telegramdb.org','web','free'],
+    ['Tgstat Bot Search','🤖','Поиск Telegram-ботов по названию','Search Telegram bots by name','https://tgstat.ru/bots','web','free']
   ]},
 
   // ========== СЕТИ И ДОМЕНЫ ==========
@@ -131,7 +149,11 @@ var CATALOG = {
     ['Nuclei','💥','Сканер уязвимостей (CLI)','Vulnerability scanner','https://github.com/projectdiscovery/nuclei','cli','free'],
     ['Katana','🗡️','Краулер для веб-приложений (CLI)','Web crawling framework','https://github.com/projectdiscovery/katana','cli','free'],
     ['FFUF','⚡','Быстрый веб-фаззер (CLI)','Fast web fuzzer','https://github.com/ffuf/ffuf','cli','free'],
-    ['Feroxbuster','🔦','Рекурсивный контент-дискавери (CLI)','Recursive content discovery','https://github.com/epi052/feroxbuster','cli','free']
+    ['Feroxbuster','🔦','Рекурсивный контент-дискавери (CLI)','Recursive content discovery','https://github.com/epi052/feroxbuster','cli','free'],
+    ['WhatWeb','🔍','Определение технологий сайта (CLI)','Website technology detection','https://github.com/urbanadventurer/WhatWeb','cli','free'],
+    ['Waybackurls','📚','Получение URL из Wayback Machine (CLI)','Get URLs from Wayback Machine','https://github.com/tomnomnom/waybackurls','cli','free'],
+    ['GAU','🔎','Получение URL из архивов (CLI)','Get URLs from archives','https://github.com/lc/gau','cli','free'],
+    ['Assetfinder','📋','Поиск связанных доменов (CLI)','Find related domains','https://github.com/tomnomnom/assetfinder','cli','free']
   ]},
 
   // ========== ИЗОБРАЖЕНИЯ И ГЕО ==========
@@ -154,7 +176,13 @@ var CATALOG = {
     ['ShadeMap','🌅','Расчёт теней в любой точке','Shadow calculation','https://shademap.app','web','free'],
     ['Bing Visual Search','🖼️','Обратный поиск изображения от Microsoft','Reverse image search by Microsoft','https://www.bing.com/visualsearch','web','free'],
     ['FaceCheck.ID','🎯','AI-поиск человека по фото лица','AI face search','https://facecheck.id','web','free'],
-    ['Lenso.ai','🔍','AI-поиск похожих изображений и мест','AI similar images and places search','https://lenso.ai','web','freemium']
+    ['Lenso.ai','🔍','AI-поиск похожих изображений и мест','AI similar images and places','https://lenso.ai','web','freemium'],
+    ['Search4Faces','👤','Поиск по фото лица в соцсетях','Search by face in social networks','https://search4faces.com','web','freemium'],
+    ['Forensically','🔬','Онлайн-инструмент анализа фото','Online photo analysis tool','https://29a.ch/photo-forensics/','web','free'],
+    ['Image Edited','🖼️','Проверка, редактировалось ли изображение','Check if image was edited','http://imageedited.com','web','free'],
+    ['Jeffreys Image Metadata','📷','Просмотр метаданных изображения','View image metadata','http://exif.regex.info/exif.cgi','web','free'],
+    ['Metadata2Go','📋','Онлайн-просмотр EXIF-данных','Online EXIF viewer','https://www.metadata2go.com','web','free'],
+    ['SunEarthTools','☀️','Расчёт положения солнца в любой точке','Sun position calculator','https://www.sunearthtools.com','web','free']
   ]},
 
   // ========== УТЕЧКИ И АРХИВЫ ==========
@@ -167,7 +195,11 @@ var CATALOG = {
     ['Leak-Lookup','🔑','Поиск по 15+ млрд записей','Search 15B+ leaked records','https://leak-lookup.com','web','paid'],
     ['Snusbase','🗃️','Поиск по крупнейшим базам утечек','Search big leak databases','https://snusbase.com','web','paid'],
     ['CachedView','📄','Кэшированные версии страниц','Cached page versions','https://cachedview.com','web','free'],
-    ['Google News Archive','📰','Архив газет и новостей','Newspaper archive','https://news.google.com/newspapers','web','free']
+    ['Google News Archive','📰','Архив газет и новостей','Newspaper archive','https://news.google.com/newspapers','web','free'],
+    ['Have I Been Sold','🔍','Проверка продажи данных на даркнет-маркетах','Check if data is on dark markets','https://haveibeensold.app','web','free'],
+    ['BreachDirectory','🔓','Проверка утечек по email и логину','Leak check by email and login','https://breachdirectory.org','web','free'],
+    ['LeakPeek','🔑','Поиск по утёкшим данным','Search leaked data','https://leakpeek.com','web','freemium'],
+    ['HIBP Pwned Passwords','🔐','Проверка пароля на утечки','Password breach check','https://haveibeenpwned.com/Passwords','web','free']
   ]},
 
   // ========== КРИПТА ==========
@@ -181,7 +213,12 @@ var CATALOG = {
     ['BitRef','🪙','Проверка Bitcoin-адресов','Bitcoin address check','https://bitref.com','web','free'],
     ['OXT','📈','Исследование блокчейна Bitcoin','Bitcoin blockchain research','https://oxt.me','web','free'],
     ['Blockchair','🪑','Мультиблокчейн explorer','Multi-blockchain explorer','https://blockchair.com','web','free'],
-    ['Breadcrumbs','🍞','Визуализация криптотранзакций','Crypto transaction visualization','https://www.breadcrumbs.app','web','freemium']
+    ['Breadcrumbs','🍞','Визуализация криптотранзакций','Crypto transaction visualization','https://www.breadcrumbs.app','web','freemium'],
+    ['Crystal Blockchain','💎','Аналитика блокчейн-транзакций','Blockchain analytics','https://crystalblockchain.com','web','freemium'],
+    ['Bitquery','📊','GraphQL API для блокчейнов','GraphQL API for blockchains','https://bitquery.io','web','freemium'],
+    ['Blockchain.com ETH','⟠','Explorer Ethereum','Ethereum explorer','https://www.blockchain.com/explorer','web','free'],
+    ['BTC.com Explorer','₿','Explorer Bitcoin','Bitcoin explorer','https://btc.com','web','free'],
+    ['TRONSCAN','🔴','Explorer блокчейна TRON','TRON blockchain explorer','https://tronscan.org','web','free']
   ]},
 
   // ========== ТРАНСПОРТ ==========
@@ -195,7 +232,11 @@ var CATALOG = {
     ['OpenCarInfo','🚗','Проверка авто по VIN','VIN check','https://opencarinfo.com','web','free'],
     ['Flightera','✈️','Статистика рейсов и авиакомпаний','Flight and airline statistics','https://www.flightera.net','web','free'],
     ['FlightStats','📊','Статус рейсов и аэропортов','Flight and airport status','https://www.flightstats.com','web','free'],
-    ['ShipXplorer','🛳️','Отслеживание судов в реальном времени','Real-time ship tracking','https://www.shipxplorer.com','web','free']
+    ['ShipXplorer','🛳️','Отслеживание судов в реальном времени','Real-time ship tracking','https://www.shipxplorer.com','web','free'],
+    ['RadarBox','📡','Отслеживание самолётов','Aircraft tracking','https://www.radarbox.com','web','free'],
+    ['PlaneFinder','✈️','Живой трекинг самолётов','Live flight tracking','https://planefinder.net','web','free'],
+    ['AIS Hub','🚢','Данные AIS морских судов','AIS ship data','http://www.aishub.net','web','free'],
+    ['OpenSky Network','🛰️','Открытая сеть ADS-B данных','Open ADS-B data network','https://opensky-network.org','web','free']
   ]},
 
   // ========== ДАРКНЕТ ==========
@@ -205,7 +246,10 @@ var CATALOG = {
     ['Tor2Web','🧅','Доступ к .onion через обычный браузер','Access .onion via regular browser','https://www.tor2web.org','web','free'],
     ['Onion.Live','📋','Каталог onion-сайтов','Onion sites catalog','https://onion.live','web','free'],
     ['Dark.fail','🕶️','Проверенный список onion-зеркал','Verified onion mirrors','https://dark.fail','web','free'],
-    ['OnionLand','🌐','Поисковик по onion-сайтам','Onion sites search engine','https://onionlandsearchengine.com','web','free']
+    ['OnionLand','🌐','Поисковик по onion-сайтам','Onion sites search engine','https://onionlandsearchengine.com','web','free'],
+    ['Deep Search','🔎','Метапоисковик по даркнету','Darknet metasearch','https://darksearch.io','web','free'],
+    ['Tor66','🔍','Поисковик по даркнету','Darknet search engine','http://tor66sewebgixwhcqfnp5inzp5x5uohhdy3kvtnyfxc2e5mxiuh34iid.onion','web','free'],
+    ['OnionSearch','🔍','Скрипт для поиска по onion (CLI)','Script for onion search','https://github.com/megadose/OnionSearch','cli','free']
   ]},
 
   // ========== AI ==========
@@ -215,7 +259,12 @@ var CATALOG = {
     ['Gemini','🌟','AI от Google','Google AI','https://gemini.google.com','web','freemium'],
     ['Perplexity','🔍','AI-поисковик с источниками','AI search with sources','https://www.perplexity.ai','web','free'],
     ['You.com','💡','AI-поисковик с режимом исследований','AI search with research mode','https://you.com','web','freemium'],
-    ['Phind','👨‍💻','AI-поиск для разработчиков','AI search for developers','https://www.phind.com','web','freemium']
+    ['Phind','👨‍💻','AI-поиск для разработчиков','AI search for developers','https://www.phind.com','web','freemium'],
+    ['Hugging Face','🤗','Платформа с открытыми AI-моделями','Open AI models platform','https://huggingface.co','web','freemium'],
+    ['Ollama','🦙','Локальный запуск LLM на компьютере','Run LLMs locally','https://ollama.com','cli','free'],
+    ['LM Studio','🎮','Десктоп-приложение для локальных LLM','Desktop app for local LLMs','https://lmstudio.ai','web','free'],
+    ['FaceCheck ID','🎯','AI-поиск человека по фото','AI face search','https://facecheck.id','web','freemium'],
+    ['Copilot','🚁','AI-помощник от Microsoft','Microsoft AI assistant','https://copilot.microsoft.com','web','freemium']
   ]},
 
   // ========== ПЕНТЕСТ ==========
@@ -233,7 +282,17 @@ var CATALOG = {
     ['SQLMap','💥','SQL-инъекции','SQL injection','https://sqlmap.org','cli','free'],
     ['Aircrack-ng','🌊','Аудит Wi-Fi сетей','Wi-Fi audit','https://www.aircrack-ng.org','cli','free'],
     ['Dalfox','🦊','Поиск XSS-уязвимостей (CLI)','XSS vulnerability scanner','https://github.com/hahwul/dalfox','cli','free'],
-    ['Dirsearch','📂','Брутфорс директорий веб-сервера (CLI)','Web path scanner','https://github.com/maurosoria/dirsearch','cli','free'],
-    ['WPScan','🔓','Сканер уязвимостей WordPress','WordPress vulnerability scanner','https://wpscan.com','cli','free']
+    ['Dirsearch','📂','Брутфорс директорий веб-сервера','Web path scanner','https://github.com/maurosoria/dirsearch','cli','free'],
+    ['WPScan','🔓','Сканер уязвимостей WordPress','WordPress vulnerability scanner','https://wpscan.com','cli','free'],
+    ['Burp Suite','🕷️','Платформа для тестирования веб-безопасности','Web security testing platform','https://portswigger.net/burp','cli','freemium'],
+    ['Ghidra','🔬','Фреймворк для реверс-инжиниринга','Reverse engineering framework','https://ghidra-sre.org','cli','free'],
+    ['John the Ripper','🗝️','Взлом паролей','Password cracking','https://www.openwall.com/john/','cli','free'],
+    ['Hashcat','🔐','Взлом хэшей','Hash cracking','https://hashcat.net/hashcat/','cli','free'],
+    ['BeEF','🐄','Фреймворк для эксплуатации браузеров','Browser exploitation framework','https://beefproject.com','cli','free'],
+    ['Sn1per','🎯','Автоматизированный пентест-фреймворк','Automated pentest framework','https://github.com/1N3/Sn1per','cli','free'],
+    ['XSStrike','💥','Поиск XSS-уязвимостей','XSS detection suite','https://github.com/s0md3v/XSStrike','cli','free'],
+    ['Commix','💉','Автоматизация command injection','Command injection automation','https://github.com/commixproject/commix','cli','free'],
+    ['Wfuzz','🔦','Веб-фаззер','Web fuzzer','https://github.com/xmendez/wfuzz','cli','free'],
+    ['ZAP','⚡','OWASP Zed Attack Proxy','OWASP ZAP','https://www.zaproxy.org','cli','free']
   ]}
 };
